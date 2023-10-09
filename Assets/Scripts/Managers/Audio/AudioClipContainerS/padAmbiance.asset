@@ -10,11 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 26da2b5acbdb60b40af3d5a3f429ceb7, type: 3}
-  m_Name: sfxAmbiance
+  m_Name: padAmbiance
   m_EditorClassIdentifier: 
   audioClips:
-  - {fileID: 8300000, guid: fd1cb05e861d29442afca16020d2f81e, type: 3}
-  - {fileID: 8300000, guid: 4b768b6ce0b42134290f6a93b142f291, type: 3}
-  - {fileID: 8300000, guid: f1e80ae2857684744a882a8e76e186dd, type: 3}
-  - {fileID: 8300000, guid: 022e02ed9b845ce47935a43b28995c17, type: 3}
-  - {fileID: 8300000, guid: d2f8d42e65416d54e9a69baa09402050, type: 3}
+  - {fileID: 8300000, guid: 1a42ec8d3e06e1b49bc6ab30e53434bb, type: 3}
+  - {fileID: 8300000, guid: e0a5de6109f38df4d863a73b554eaa68, type: 3}
+  - {fileID: 8300000, guid: 49387e34b1949004e8e376fffd1c5d84, type: 3}
