@@ -5307,6 +5307,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 729003664000119590, guid: 69efbf52b0c35a14bb6f7349c1ab270b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenNextLevel
+      objectReference: {fileID: 0}
     - target: {fileID: 3030256684901080851, guid: 69efbf52b0c35a14bb6f7349c1ab270b, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -5387,10 +5391,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3694889744783220246, guid: 69efbf52b0c35a14bb6f7349c1ab270b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenNextLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229323670032646361, guid: 69efbf52b0c35a14bb6f7349c1ab270b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229323670032646361, guid: 69efbf52b0c35a14bb6f7349c1ab270b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenNextLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 5279466910375745952, guid: 69efbf52b0c35a14bb6f7349c1ab270b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5748520425165500017, guid: 69efbf52b0c35a14bb6f7349c1ab270b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenNextLevel
+      objectReference: {fileID: 0}
     - target: {fileID: 8635394816200666015, guid: 69efbf52b0c35a14bb6f7349c1ab270b, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 8857259363552520927, guid: 69efbf52b0c35a14bb6f7349c1ab270b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -24,7 +24,7 @@ public class UIManager : MonoBehaviour
     /// <param name="pressedLevelIndex"></param>
     public void ActivateLevelPanel(int pressedLevelIndex)
     {
-        //checkes if the level is locked or not.
+        //checks if the level is locked or not.
         if (!_levelManager.HasLevelOpened(pressedLevelIndex - 1))
             return;
         //activate the pressed opened or done level.
@@ -34,7 +34,15 @@ public class UIManager : MonoBehaviour
     public void BackToMenuPanel()
     {
         _levelPanels[_levelManager.CurrentPressedLevelBTN].SetActive(false);
-        _levelManager.UnlockNextLevel();
+        //_levelManager.UnlockNextLevel();
+    }
+
+    public void OpenNextLevel() // a method to open next level obviously lol
+    {
+        _levelPanels[_levelManager.CurrentPressedLevelBTN].SetActive(false); // close the current level panel
+        _levelManager.UnlockNextLevel(); // unlock the next level
+        int currentLevelActualIndex = _levelManager.CurrentPressedLevelBTN + 1; // get the actual current level index
+        ActivateLevelPanel(currentLevelActualIndex + 1); // open the next level panel
     }
 
 
