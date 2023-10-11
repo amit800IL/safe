@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: padAmbiance
   m_EditorClassIdentifier: 
   audioClips:
-  - {fileID: 8300000, guid: 1a42ec8d3e06e1b49bc6ab30e53434bb, type: 3}
-  - {fileID: 8300000, guid: e0a5de6109f38df4d863a73b554eaa68, type: 3}
-  - {fileID: 8300000, guid: 49387e34b1949004e8e376fffd1c5d84, type: 3}
+  - {fileID: 8300000, guid: a39e82c490bbd8b4283e840266978c72, type: 3}
+  - {fileID: 8300000, guid: 310b2e81749624045b4dd5ea205c5dd5, type: 3}
+  - {fileID: 8300000, guid: 33f39479d7244ba41a221bb8678cfc3e, type: 3}
