@@ -34,12 +34,11 @@ public class UIManager : MonoBehaviour
     public void BackToMenuPanel()
     {
         _levelPanels[_levelManager.CurrentPressedLevelBTN].SetActive(false);
-        //_levelManager.UnlockNextLevel();
     }
 
     public void OpenNextLevel() // a method to open next level obviously lol
     {
-        _levelPanels[_levelManager.CurrentPressedLevelBTN].SetActive(false); // close the current level panel
+        BackToMenuPanel(); // close the current level panel
         _levelManager.UnlockNextLevel(); // unlock the next level
         int currentLevelActualIndex = _levelManager.CurrentPressedLevelBTN + 1; // get the actual current level index
         ActivateLevelPanel(currentLevelActualIndex + 1); // open the next level panel
