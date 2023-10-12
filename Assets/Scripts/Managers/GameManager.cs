@@ -1,18 +1,25 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public SavingSystem SavingSystem;
+    
+    private const string CurrentSaveKey = "currentSave";
+    private void Awake()
     {
-        
+        var saveFile = SavingSystem.ListSaves().ToList()[0] ?? string.Empty;
+        if (!string.IsNullOrEmpty(saveFile))
+        {
+            SavingSystem.Load(saveFile);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnApplicationQuit()
     {
-        
+        SavingSystem.SaveFileExist(CurrentSaveKey);
     }
 }
