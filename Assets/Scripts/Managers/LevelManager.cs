@@ -1,41 +1,71 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
-    public Button[] levelButtons;
+    public static LevelManager Instance;
 
+    
     /// <summary>
-    /// this index is the opened level, above it are the locked levels, under it are the done levels. always above 0 value
+    /// this index is the opened level, above it are the locked levels, under it are the done levels.
     /// </summary>
-    private int _unlockedLevels = 1;
-    public int UnlockedLevels { get { return _unlockedLevels; } private set { _unlockedLevels = value; } }
+    public int UnlockedLevels { get; private set; } = 0;
 
     public int CurrentPressedLevelBTN;
 
-    public bool HasLevelOpened(int levelIndex)//levelIndex is bigger then 0 always
+    public Action OnUnlockedLevel;
+
+    public List<ILevelDataProvider> Levels = new List<ILevelDataProvider>();
+    
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
+
+        Levels = FindObjectsByType<MonoBehaviour>(FindObjectsInactive.Include, FindObjectsSortMode.None).OfType<ILevelDataProvider>().ToList();
+        Levels.OrderBy(level => level.GetLevelData().LevelNumber);
+    }
+    
+    public bool HasLevelOpened(int levelIndex)
     {
         CurrentPressedLevelBTN = levelIndex;
-        if (levelIndex < _unlockedLevels)
-            return true;
+        foreach (var levelUI in Levels)
+        {
+            if (levelUI.GetLevelData().LevelNumber == levelIndex)
+            {
+                return true;
+            }
+        }
         return false;
-
     }
-
-
+    
     //when player finish last opened level
     public void UnlockNextLevel()
     {
-        if(UnlockedLevels - 1 != CurrentPressedLevelBTN)//cannot open if its a repit on done level
+        if (UnlockedLevels != CurrentPressedLevelBTN)
             return;
-        if (_unlockedLevels < levelButtons.Length)
+
+        foreach (var levelUI in Levels)
         {
-            levelButtons[_unlockedLevels].interactable = true;
-            _unlockedLevels++;
+            var levelData = levelUI.GetLevelData();
+            if (levelData.LevelNumber != UnlockedLevels) continue;
+            if (levelData.IsComplete) continue;
+            levelData.IsComplete = true;
+            UnlockedLevels++;
+            OnUnlockedLevel?.Invoke();
+            break;
         }
     }
 
-   
+    public void ResetAllLevels()
+    {
+        foreach (var level in Levels)
+        {
+            level.GetLevelData().IsComplete = false;
+        }
+    }
 }

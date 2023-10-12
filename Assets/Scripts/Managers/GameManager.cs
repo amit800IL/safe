@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -11,15 +8,31 @@ public class GameManager : MonoBehaviour
     private const string CurrentSaveKey = "currentSave";
     private void Awake()
     {
-        var saveFile = SavingSystem.ListSaves().ToList()[0] ?? string.Empty;
-        if (!string.IsNullOrEmpty(saveFile))
+        if (SavingSystem.SaveFileExist(CurrentSaveKey))
         {
-            SavingSystem.Load(saveFile);
+            SavingSystem.Load(CurrentSaveKey);
+        }
+        else
+        {
+            LevelManager.Instance.ResetAllLevels();
         }
     }
 
-    private void OnApplicationQuit()
+    public void DeleteSave()
     {
-        SavingSystem.SaveFileExist(CurrentSaveKey);
+        if (SavingSystem.SaveFileExist(CurrentSaveKey))
+        {
+            SavingSystem.Delete(CurrentSaveKey);
+        }
     }
+
+    public void Save()
+    {
+        SavingSystem.Save(CurrentSaveKey);
+    }
+
+    // private void OnApplicationQuit()
+    // {
+    //     SavingSystem.Save(CurrentSaveKey);
+    // }
 }

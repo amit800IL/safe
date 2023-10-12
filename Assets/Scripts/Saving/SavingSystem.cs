@@ -96,7 +96,7 @@ public class SavingSystem : MonoBehaviour
 
     private void RestoreState(Dictionary<string, object> state)
     {
-        foreach (SaveableEntity saveable in FindObjectsOfType<SaveableEntity>())
+        foreach (SaveableEntity saveable in FindObjectsOfType<SaveableEntity>(true))
         {
             string id = saveable.GetUniqueIdentifier();
             if (state.ContainsKey(id))
