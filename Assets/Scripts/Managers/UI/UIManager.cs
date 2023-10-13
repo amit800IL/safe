@@ -6,8 +6,9 @@ using UnityEngine.EventSystems;
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
-    [SerializeField] private LevelManager _levelManager;
-    [SerializeField] private GameObject[] _levelPanels;
+    private SequenceData seqData = new SequenceData();
+    
+    [SerializeField] private GameObject[] sequencesPanels;
 
     private void Awake()
     {
@@ -16,7 +17,6 @@ public class UIManager : MonoBehaviour
         else
             Destroy(gameObject);
     }
-
     
     /// <summary>
     /// even called when the player pressed on a level button in the level map.
@@ -24,23 +24,35 @@ public class UIManager : MonoBehaviour
     /// <param name="pressedLevelIndex"></param>
     public void ActivateLevelPanel(int pressedLevelIndex)
     {
+        
         //checks if the level is locked or not.
-        if (!_levelManager.HasLevelOpened(pressedLevelIndex - 1))
+        if (!seqData.HasLevelOpened(pressedLevelIndex - 1))
             return;
         //activate the pressed opened or done level.
-        _levelPanels[pressedLevelIndex - 1].SetActive(true);
+        seqData.LevelPanels[pressedLevelIndex - 1].SetActive(true);
+        // _levelPanels[pressedLevelIndex - 1].SetActive(true);
     }
 
+    public void SetSequence(int pressedSequenceIndex)
+    {
+      //get component of the pressed sequence
+      seqData = sequencesPanels[pressedSequenceIndex -1].GetComponent<SequenceData>();
+     seqData.Unlock1stLevel();
+    // seqData.levelButtons[0].interactable = true;
+      //check if the sequence is locked or not
+      //activate the 1st level button of the sequence
+      
+    }
     public void BackToMenuPanel()
     {
-        _levelPanels[_levelManager.CurrentPressedLevelBTN].SetActive(false);
+        seqData.LevelPanels[seqData.CurrentPressedLevelBTN].SetActive(false);
     }
 
     public void OpenNextLevel() // a method to open next level obviously lol
     {
         BackToMenuPanel(); // close the current level panel
-        _levelManager.UnlockNextLevel(); // unlock the next level
-        int currentLevelActualIndex = _levelManager.CurrentPressedLevelBTN + 1; // get the actual current level index
+       seqData.UnlockNextLevel(); // unlock the next level
+        int currentLevelActualIndex = seqData.CurrentPressedLevelBTN + 1; // get the actual current level index
         ActivateLevelPanel(currentLevelActualIndex + 1); // open the next level panel
     }
 
