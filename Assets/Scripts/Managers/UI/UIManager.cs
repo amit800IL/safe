@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
-    private SequenceData seqData = new SequenceData();
+    private SequenceData seqData;
     
     [SerializeField] private GameObject[] sequencesPanels;
+    [SerializeField] private Button[] sequenceButtons;
+
 
     private void Awake()
     {
@@ -33,15 +36,24 @@ public class UIManager : MonoBehaviour
         // _levelPanels[pressedLevelIndex - 1].SetActive(true);
     }
 
+    /// <summary>
+    /// a method to set sequence data to the current sequence which player had clicked on.
+    /// </summary>
+    /// <param name="pressedSequenceIndex"></param>
     public void SetSequence(int pressedSequenceIndex)
     {
       //get component of the pressed sequence
       seqData = sequencesPanels[pressedSequenceIndex -1].GetComponent<SequenceData>();
      seqData.Unlock1stLevel();
-    // seqData.levelButtons[0].interactable = true;
+     //seqData.levelButtons[0].interactable = true;
       //check if the sequence is locked or not
       //activate the 1st level button of the sequence
       
+    }
+    
+    public void EnableSequenceButton(int sequenceIndex)
+    {
+        sequenceButtons[sequenceIndex - 1].interactable = true;
     }
     public void BackToMenuPanel()
     {

@@ -5274,6 +5274,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 975824422089283598, guid: 69efbf52b0c35a14bb6f7349c1ab270b, type: 3}
   m_PrefabInstance: {fileID: 8116049607772485266}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1795505112 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4266908415531501071, guid: 69efbf52b0c35a14bb6f7349c1ab270b, type: 3}
+  m_PrefabInstance: {fileID: 8116049607772485266}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1960444560962219425
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5519,6 +5524,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OpenNextLevel
       objectReference: {fileID: 0}
+    - target: {fileID: 3739925460609860761, guid: 69efbf52b0c35a14bb6f7349c1ab270b, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4229323670032646361, guid: 69efbf52b0c35a14bb6f7349c1ab270b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
@@ -5533,7 +5542,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5015678368868471397, guid: 69efbf52b0c35a14bb6f7349c1ab270b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000030517578
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5279466910375745952, guid: 69efbf52b0c35a14bb6f7349c1ab270b, type: 3}
       propertyPath: m_Name
@@ -5547,14 +5556,22 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OpenNextLevel
       objectReference: {fileID: 0}
+    - target: {fileID: 5748520425165500017, guid: 69efbf52b0c35a14bb6f7349c1ab270b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: EnableSequenceButton
+      objectReference: {fileID: 0}
     - target: {fileID: 6983441696448820424, guid: 69efbf52b0c35a14bb6f7349c1ab270b, type: 3}
       propertyPath: sequencesPanels.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6983441696448820424, guid: 69efbf52b0c35a14bb6f7349c1ab270b, type: 3}
       propertyPath: sequencesPanels.Array.data[0]
       value: 
       objectReference: {fileID: 1510534453}
+    - target: {fileID: 6983441696448820424, guid: 69efbf52b0c35a14bb6f7349c1ab270b, type: 3}
+      propertyPath: sequencesPanels.Array.data[1]
+      value: 
+      objectReference: {fileID: 1795505112}
     - target: {fileID: 7102847603672734286, guid: 69efbf52b0c35a14bb6f7349c1ab270b, type: 3}
       propertyPath: m_IsActive
       value: 1

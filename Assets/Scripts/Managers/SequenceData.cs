@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class SequenceData : MonoBehaviour
 {
-    [SerializeField] private LevelManager _levelManager;
     public Button[] levelButtons;
     public GameObject[] LevelPanels;
     private int _unlockedLevels = 1;
