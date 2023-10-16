@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +9,7 @@ public class GroundingLevelButton : MonoBehaviour
     [Header("References")]
     [SerializeField] private FillingPot fillingPot;
     public Transform pouringSpot;                           // The top of the pot
+    [SerializeField] public TMP_Text myOptionText;
 
     [Space, Header("Movement Variables")]
     [SerializeField] private float moveSpeed            = 40.0f;        // Speed of movement.
@@ -20,27 +22,66 @@ public class GroundingLevelButton : MonoBehaviour
     [SerializeField] private float disappearingSpeed    = 0.2f;        // Speed of movement.
 
 
+    [HideInInspector] public Button myButton;
     private bool isMoving = false;
-
     private bool isDissolving = false;
-    private Button myButton;
+    private GroundingLevelUIManager groundingStageUI;
+    private Vector3 startingPos;
     
     private void Awake() {
+        if (fillingPot == null) fillingPot = FindObjectOfType<FillingPot>();
+        if (pouringSpot == null) pouringSpot = fillingPot.pouringSpot;
+        
         myButton = GetComponent<Button>();
 
+        startingPos = transform.position;
+
         myButton.onClick.AddListener(() => StartMovingTowardsPot());
+        groundingStageUI = FindObjectOfType<GroundingLevelUIManager>();
     }
+
+    void OnEnable(){
+        GroundingLevelUIManager.clickedButton   += OnClickedSomeButton;
+        GroundingLevelUIManager.startStage      += OnStartStage;
+    }
+    void OnDisable(){
+        GroundingLevelUIManager.clickedButton   -= OnClickedSomeButton;
+        GroundingLevelUIManager.startStage      -= OnStartStage;
+    }
+
+    // dont let any intercation mid animation
+    void OnClickedSomeButton(string chosenOption){
+        myButton.interactable = false;
+    }
+    // when the stage starts, "reset" the button
+    void OnStartStage(){
+        myButton.interactable = true;
+        ColorBlock buttonColors = myButton.colors;
+
+        var newColor = buttonColors.disabledColor;
+        newColor.a = 1f;
+        
+        buttonColors.disabledColor = newColor;
+        myButton.colors = buttonColors;
+
+        transform.position = startingPos;
+        isMoving = false;
+
+        isDissolving = false;
+    }
+
     /// <summary>
     /// available as an OnClick event for the button.
     /// </summary>
     public void StartMovingTowardsPot(){
         isMoving = true;
 
-        myButton.interactable = false;
         myButton.transition = Selectable.Transition.ColorTint;
+        GroundingLevelUIManager.clickedButton?.Invoke(myOptionText.text);
     }
     
 
+    // Update function
     private void Update() {
         if (isMoving){
             MoveTowardsDestination(Time.deltaTime);
@@ -96,7 +137,9 @@ public class GroundingLevelButton : MonoBehaviour
         myButton.colors = buttonColors;
 
         if (newColor.a <= 0){
-            Destroy(gameObject);
+            isDissolving = false;
+            gameObject.SetActive(false);
+            groundingStageUI.FinishedStage();
         }
     }
 

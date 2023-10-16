@@ -5,7 +5,7 @@ public class FillingPot : MonoBehaviour {
 
     [Header("References")]
     [SerializeField] private Image fillImage;
-
+    [SerializeField] public Transform pouringSpot; 
 
     [Space, Header("Animation Variables")]
     [SerializeField] private Animator sandDotsAnimator;
@@ -33,7 +33,7 @@ public class FillingPot : MonoBehaviour {
     /// </summary>
     public void DissolveIntoPot(){
         sandDotsAnimator.SetTrigger(startPouringTrigger);
-        
+
         nextFillingAmount = fillImage.fillAmount + 1 / maxCapacity;
 
         nextFillingAmount = Mathf.Clamp(nextFillingAmount, 0f, 1f);
