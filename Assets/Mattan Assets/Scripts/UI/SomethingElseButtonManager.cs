@@ -5,7 +5,7 @@ using UnityEngine.UI;
 /// This is the "משהו אחר" button. The purpose of this class is to mimic the behaviour
 /// of the GroundLevelButton class on other buttons.
 /// </summary>
-public class SomethingElseButton : MonoBehaviour
+public class SomethingElseButtonManager : MonoBehaviour
 {
     [SerializeField] private Button myButton;
 
@@ -23,5 +23,6 @@ public class SomethingElseButton : MonoBehaviour
     }
     void OnStartStage(){
         myButton.interactable = true;
+        myButton.gameObject.SetActive(true);
     }
 }

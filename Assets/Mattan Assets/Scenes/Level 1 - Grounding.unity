@@ -180,7 +180,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u05D1\u05DE\u05E1\u05DA \u05D4\u05E8\u05D0\u05E9\u05D5\u05DF, \u05D4\u05EA\u05D1\u05E7\u05E9\u05EA\u05DD:"
+  m_text: "\u05D1\u05DE\u05E1\u05DA \u05D4\u05E9\u05E0\u05D9, \u05D4\u05EA\u05D1\u05E7\u05E9\u05EA\u05DD:"
   m_isRightToLeft: 1
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -684,9 +684,9 @@ MonoBehaviour:
   fillingPot: {fileID: 60644260}
   pouringSpot: {fileID: 1004063360}
   myOptionText: {fileID: 139511682}
-  moveSpeed: 40
+  moveSpeed: 70
   stoppingDistance: 5
-  timeBetweenReachingToDissapearing: 1
+  timeBetweenReachingToDissapearing: 0.7
   disappearingSpeed: 0.17
   myButton: {fileID: 0}
 --- !u!114 &90609123
@@ -2851,6 +2851,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1783460003}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &623239488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3719,9 +3731,9 @@ MonoBehaviour:
   fillingPot: {fileID: 60644260}
   pouringSpot: {fileID: 1004063360}
   myOptionText: {fileID: 2015109979}
-  moveSpeed: 40
+  moveSpeed: 70
   stoppingDistance: 5
-  timeBetweenReachingToDissapearing: 1
+  timeBetweenReachingToDissapearing: 0.7
   disappearingSpeed: 0.17
   myButton: {fileID: 0}
 --- !u!114 &781344713
@@ -4014,6 +4026,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 807901009}
+  - component: {fileID: 807901010}
   m_Layer: 0
   m_Name: In game Screen
   m_TagString: Untagged
@@ -4044,6 +4057,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &807901010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 807901008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3e169f39dbfb7545a74b22e90123a74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myButton: {fileID: 1783460006}
 --- !u!1 &818896912
 GameObject:
   m_ObjectHideFlags: 0
@@ -6975,9 +7001,9 @@ MonoBehaviour:
   fillingPot: {fileID: 60644260}
   pouringSpot: {fileID: 1004063360}
   myOptionText: {fileID: 1218953366}
-  moveSpeed: 40
+  moveSpeed: 70
   stoppingDistance: 5
-  timeBetweenReachingToDissapearing: 1
+  timeBetweenReachingToDissapearing: 0.7
   disappearingSpeed: 0.17
   myButton: {fileID: 0}
 --- !u!114 &1572474929
@@ -8193,7 +8219,6 @@ GameObject:
   - component: {fileID: 1783460007}
   - component: {fileID: 1783460006}
   - component: {fileID: 1783460005}
-  - component: {fileID: 1783460009}
   m_Layer: 0
   m_Name: Something Else
   m_TagString: Untagged
@@ -8360,19 +8385,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1783460003}
   m_CullTransparentMesh: 1
---- !u!114 &1783460009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1783460003}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3e169f39dbfb7545a74b22e90123a74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myButton: {fileID: 1783460006}
 --- !u!1 &1822991157
 GameObject:
   m_ObjectHideFlags: 0
@@ -9167,7 +9179,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u05D1\u05DE\u05E1\u05DA \u05D4\u05E8\u05D0\u05E9\u05D5\u05DF, \u05D4\u05EA\u05D1\u05E7\u05E9\u05EA\u05DD:"
+  m_text: "\u05D1\u05DE\u05E1\u05DA \u05D4\u05D7\u05DE\u05D9\u05E9\u05D9, \u05D4\u05EA\u05D1\u05E7\u05E9\u05EA\u05DD:"
   m_isRightToLeft: 1
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -9829,7 +9841,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u05D1\u05DE\u05E1\u05DA \u05D4\u05E8\u05D0\u05E9\u05D5\u05DF, \u05D4\u05EA\u05D1\u05E7\u05E9\u05EA\u05DD:"
+  m_text: "\u05D1\u05DE\u05E1\u05DA \u05D4\u05E8\u05D1\u05D9\u05E2\u05D9, \u05D4\u05EA\u05D1\u05E7\u05E9\u05EA\u05DD:"
   m_isRightToLeft: 1
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -10097,7 +10109,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u05D1\u05DE\u05E1\u05DA \u05D4\u05E8\u05D0\u05E9\u05D5\u05DF, \u05D4\u05EA\u05D1\u05E7\u05E9\u05EA\u05DD:"
+  m_text: "\u05D1\u05DE\u05E1\u05DA \u05D4\u05E9\u05DC\u05D9\u05E9\u05D9, \u05D4\u05EA\u05D1\u05E7\u05E9\u05EA\u05DD:"
   m_isRightToLeft: 1
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -10604,9 +10616,9 @@ MonoBehaviour:
   fillingPot: {fileID: 60644260}
   pouringSpot: {fileID: 1004063360}
   myOptionText: {fileID: 583793037}
-  moveSpeed: 40
+  moveSpeed: 70
   stoppingDistance: 5
-  timeBetweenReachingToDissapearing: 1
+  timeBetweenReachingToDissapearing: 0.7
   disappearingSpeed: 0.17
   myButton: {fileID: 0}
 --- !u!114 &2122652584
@@ -10918,6 +10930,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5449270647757617536, guid: 0b56a5ce4b7b5d440866d93e916a8873, type: 3}
+      propertyPath: moveSpeed
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 5449270647757617536, guid: 0b56a5ce4b7b5d440866d93e916a8873, type: 3}
       propertyPath: fillingPot
       value: 
       objectReference: {fileID: 60644260}
@@ -10928,6 +10944,10 @@ PrefabInstance:
     - target: {fileID: 5449270647757617536, guid: 0b56a5ce4b7b5d440866d93e916a8873, type: 3}
       propertyPath: disappearingSpeed
       value: 0.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 5449270647757617536, guid: 0b56a5ce4b7b5d440866d93e916a8873, type: 3}
+      propertyPath: timeBetweenReachingToDissapearing
+      value: 0.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

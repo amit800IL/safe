@@ -138,9 +138,9 @@ MonoBehaviour:
   fillingPot: {fileID: 0}
   pouringSpot: {fileID: 0}
   myOptionText: {fileID: 6215703893670941251}
-  moveSpeed: 40
+  moveSpeed: 70
   stoppingDistance: 5
-  timeBetweenReachingToDissapearing: 1
+  timeBetweenReachingToDissapearing: 0.7
   disappearingSpeed: 0.17
   myButton: {fileID: 0}
 --- !u!95 &7530106717692870449
