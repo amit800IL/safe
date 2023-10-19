@@ -27,6 +27,7 @@ public class GroundingLevelButton : MonoBehaviour
     private bool isDissolving = false;
     private GroundingLevelUIManager groundingStageUI;
     private Vector3 startingPos;
+    bool subscribedToStoppedSand = false;
     
     private void Awake() {
         if (fillingPot == null) fillingPot = FindObjectOfType<FillingPot>();
@@ -43,10 +44,12 @@ public class GroundingLevelButton : MonoBehaviour
     void OnEnable(){
         GroundingLevelUIManager.clickedButton   += OnClickedSomeButton;
         GroundingLevelUIManager.startStage      += OnStartStage;
+        GroundingLevelUIManager.buttonsControl  += OnButtonsControl;
     }
     void OnDisable(){
         GroundingLevelUIManager.clickedButton   -= OnClickedSomeButton;
         GroundingLevelUIManager.startStage      -= OnStartStage;
+        GroundingLevelUIManager.buttonsControl  -= OnButtonsControl;
     }
 
     // dont let any intercation mid animation
@@ -55,6 +58,14 @@ public class GroundingLevelButton : MonoBehaviour
     }
     // when the stage starts, "reset" the button
     void OnStartStage(){
+        SetInteractable();
+
+        transform.position = startingPos;
+        isMoving = false;
+
+        isDissolving = false;
+    }
+    void SetInteractable(){
         myButton.interactable = true;
         ColorBlock buttonColors = myButton.colors;
 
@@ -63,11 +74,10 @@ public class GroundingLevelButton : MonoBehaviour
         
         buttonColors.disabledColor = newColor;
         myButton.colors = buttonColors;
-
-        transform.position = startingPos;
-        isMoving = false;
-
-        isDissolving = false;
+    }
+    void OnButtonsControl(ButtonActivation activation){
+        if (activation.interactable) SetInteractable();
+        if (activation.active) gameObject.SetActive(true);
     }
 
     /// <summary>
@@ -128,6 +138,8 @@ public class GroundingLevelButton : MonoBehaviour
     /// </summary>
     /// <param name="deltaTime"></param>
     void DisappearImage(float deltaTime){
+        Subscribe();
+        
         ColorBlock buttonColors = myButton.colors;
 
         var newColor = buttonColors.disabledColor;
@@ -136,11 +148,28 @@ public class GroundingLevelButton : MonoBehaviour
         buttonColors.disabledColor = newColor;
         myButton.colors = buttonColors;
 
-        if (newColor.a <= 0){
+        if (newColor.a <= 0.1f){
             isDissolving = false;
-            gameObject.SetActive(false);
-            groundingStageUI.FinishedStage();
         }
+    }
+
+    void FinishDissappearing(){
+        isDissolving = false;
+
+        gameObject.SetActive(false);
+
+        UnSubscribe();
+    }
+
+    void Subscribe(){
+        if (subscribedToStoppedSand) return;
+        subscribedToStoppedSand = true;
+        FindObjectOfType<FillingPot>().finishedDroppingSand += FinishDissappearing;
+    }
+    void UnSubscribe(){
+        if (!subscribedToStoppedSand) return;
+        subscribedToStoppedSand = false;
+        FindObjectOfType<FillingPot>().finishedDroppingSand -= FinishDissappearing;
     }
 
 

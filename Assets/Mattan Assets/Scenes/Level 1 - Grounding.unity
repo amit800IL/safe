@@ -552,7 +552,7 @@ MonoBehaviour:
   myOptionText: {fileID: 139511682}
   moveSpeed: 70
   stoppingDistance: 5
-  timeBetweenReachingToDissapearing: 0.7
+  timeBetweenReachingToDissapearing: 1
   disappearingSpeed: 0.17
   myButton: {fileID: 0}
 --- !u!114 &90609123
@@ -2123,18 +2123,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1783460003}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &623239488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2941,7 +2929,7 @@ MonoBehaviour:
   myOptionText: {fileID: 2015109979}
   moveSpeed: 70
   stoppingDistance: 5
-  timeBetweenReachingToDissapearing: 0.7
+  timeBetweenReachingToDissapearing: 1
   disappearingSpeed: 0.17
   myButton: {fileID: 0}
 --- !u!114 &781344713
@@ -4959,7 +4947,7 @@ MonoBehaviour:
   myOptionText: {fileID: 1218953366}
   moveSpeed: 70
   stoppingDistance: 5
-  timeBetweenReachingToDissapearing: 0.7
+  timeBetweenReachingToDissapearing: 1
   disappearingSpeed: 0.17
   myButton: {fileID: 0}
 --- !u!114 &1572474929
@@ -5794,6 +5782,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8573b63ff29f100429ca2bdb7dbd571f, type: 2}
   - {fileID: 11400000, guid: 50c10251021fa4e46a222878af963276, type: 2}
   - {fileID: 11400000, guid: cf64aa4a9535d814e9f917a8399abf92, type: 2}
+  potReference: {fileID: 60644260}
   inGameScreen: {fileID: 807901008}
   stageNumberText: {fileID: 38229086}
   taskInformation: {fileID: 1076573473}
@@ -6171,7 +6160,7 @@ MonoBehaviour:
   myOptionText: {fileID: 583793037}
   moveSpeed: 70
   stoppingDistance: 5
-  timeBetweenReachingToDissapearing: 0.7
+  timeBetweenReachingToDissapearing: 1
   disappearingSpeed: 0.17
   myButton: {fileID: 0}
 --- !u!114 &2122652584
@@ -6366,7 +6355,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5449270647757617536, guid: 0b56a5ce4b7b5d440866d93e916a8873, type: 3}
       propertyPath: timeBetweenReachingToDissapearing
-      value: 0.7
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6215703893670941251, guid: 0b56a5ce4b7b5d440866d93e916a8873, type: 3}
       propertyPath: m_fontSize

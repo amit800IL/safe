@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,17 +15,22 @@ public class FillingPot : MonoBehaviour {
 
 
     [Space, Header("Variables")]
-    [SerializeField] private float maxCapacity              = 1f;
+    [SerializeField] public float maxCapacity              = 1f;
     [SerializeField] private float startingFillingAmount    = 0.15f;
     [SerializeField] private float fillingSpeed             = 0.2f;
+
+    
+    public Action finishedDroppingSand;
 
     float nextFillingAmount = 0f;
     bool isPouring = false;
 
 
     private void Awake() {
-        fillImage.fillAmount = startingFillingAmount;
+        ResetPot();
     }
+
+    public void ResetPot() => fillImage.fillAmount = startingFillingAmount;
 
     /// <summary>
     /// add a fraction of maxCapacity to the pot.
@@ -64,5 +70,15 @@ public class FillingPot : MonoBehaviour {
     public void FinishedPouring(){
         sandDotsAnimator.SetTrigger(finishedPouringTrigger);
         isPouring = false;
+        
+    }
+
+    /// <summary>
+    /// finished the sand dropletts
+    /// </summary>
+    public void OnFinishedDroppingSand(){
+        var groundingStageUI = FindObjectOfType<GroundingLevelUIManager>();
+        groundingStageUI.CheckFinishedStage();
+        finishedDroppingSand?.Invoke();
     }
 }

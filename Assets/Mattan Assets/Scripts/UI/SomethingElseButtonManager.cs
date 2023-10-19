@@ -12,10 +12,12 @@ public class SomethingElseButtonManager : MonoBehaviour
     void OnEnable(){
         GroundingLevelUIManager.clickedButton   += OnClickedSomeButton;
         GroundingLevelUIManager.startStage      += OnStartStage;
+        GroundingLevelUIManager.buttonsControl  += OnButtonsControl;
     }
     void OnDisable(){
         GroundingLevelUIManager.clickedButton   -= OnClickedSomeButton;
         GroundingLevelUIManager.startStage      -= OnStartStage;
+        GroundingLevelUIManager.buttonsControl  -= OnButtonsControl;
     }
 
     void OnClickedSomeButton(string chosenOption){
@@ -24,5 +26,8 @@ public class SomethingElseButtonManager : MonoBehaviour
     void OnStartStage(){
         myButton.interactable = true;
         myButton.gameObject.SetActive(true);
+    }
+    void OnButtonsControl(ButtonActivation activation){
+        myButton.interactable = activation.interactable;
     }
 }

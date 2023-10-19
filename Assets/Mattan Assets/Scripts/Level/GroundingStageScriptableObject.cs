@@ -5,5 +5,6 @@ using UnityEngine;
 public class GroundingStageScriptableObject : ScriptableObject {
     public int stageNumber;
     public string taskInformation;
+    public int numberOfChoicesToPass;
     public string [] buttonsOptions;
 }
