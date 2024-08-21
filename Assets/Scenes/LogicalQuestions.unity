@@ -573,8 +573,8 @@ MonoBehaviour:
   m_text: "\u05E1\u05DE\u05E0\u05D5 \u05D0\u05EA \u05D4\u05DE\u05E1\u05E4\u05E8\u05D9\u05DD
     \u05D4\u05D0\u05D9 \u05D6\u05D5\u05D2\u05D9\u05D9\u05DD"
   m_isRightToLeft: 1
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 01f99ec01bb395042acd91e405a45bea, type: 2}
+  m_sharedMaterial: {fileID: -1525297678734459227, guid: 01f99ec01bb395042acd91e405a45bea, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -598,7 +598,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 42.5
+  m_fontSize: 46.25
   m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 1
