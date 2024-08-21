@@ -32,7 +32,8 @@ public class FillingPot : MonoBehaviour {
     /// tween using poured sand.
     /// called by some GroundingLevelButton
     /// </summary>
-    public void DissolveIntoPot(){
+    public void DissolveIntoPot()
+    {
         sandDotsAnimator.SetTrigger(startPouringTrigger);
 
         nextFillingAmount = fillImage.fillAmount + 1 / maxCapacity;
@@ -44,13 +45,15 @@ public class FillingPot : MonoBehaviour {
     /// called by sand dots animator when finished starting the pour animation to start
     /// filling the sand image
     /// </summary>
-    public void OnFinishedStartingToPour(){
+    public void OnFinishedStartingToPour()
+    {
         isPouring = true;
     }
 
-    private void Update() {
-        if (isPouring){
-
+    private void Update()
+    {
+        if (isPouring)
+        {
             fillImage.fillAmount += fillingSpeed * Time.deltaTime;
 
             if (fillImage.fillAmount >= nextFillingAmount){
@@ -62,7 +65,8 @@ public class FillingPot : MonoBehaviour {
     /// <summary>
     /// stop pouring and make the sand image stop pouring as well
     /// </summary>
-    public void FinishedPouring(){
+    public void FinishedPouring()
+    {
         sandDotsAnimator.SetTrigger(finishedPouringTrigger);
         isPouring = false;
     }

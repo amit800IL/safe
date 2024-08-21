@@ -19,7 +19,8 @@ public class AddOptionButton : MonoBehaviour
     /// <summary>
     /// the on click event for the add button
     /// </summary>
-    public void OnClick(){
+    public void OnClick()
+    {
         // avoid miss clicks
         if (message == "") return;
 

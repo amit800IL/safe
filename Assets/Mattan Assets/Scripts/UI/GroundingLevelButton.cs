@@ -14,7 +14,7 @@ public class GroundingLevelButton : MonoBehaviour
     [Space, Header("Movement Variables")]
     [SerializeField] private float moveSpeed = 40.0f; // Speed of movement.
     [SerializeField] private float stoppingDistance = 5.0f; // Distance at which movement stops.
-    
+
     [Space, Header("Movement Variables")]
     [SerializeField] private float timeBetweenReachingToDissapearing = 1f;
 
@@ -27,12 +27,12 @@ public class GroundingLevelButton : MonoBehaviour
     private bool isDissolving = false;
     private GroundingLevelUIManager groundingStageUI;
     private Vector3 startingPos;
-    
+
     private void Awake()
     {
         if (fillingPot == null) fillingPot = FindObjectOfType<FillingPot>();
         if (pouringSpot == null) pouringSpot = fillingPot.pouringSpot;
-        
+
         myButton = GetComponent<Button>();
 
         startingPos = transform.position;
@@ -41,32 +41,32 @@ public class GroundingLevelButton : MonoBehaviour
         groundingStageUI = FindObjectOfType<GroundingLevelUIManager>();
     }
 
-    void OnEnable()
+    private void OnEnable()
     {
         GroundingLevelUIManager.clickedButton += OnClickedSomeButton;
         GroundingLevelUIManager.startStage += OnStartStage;
     }
 
-    void OnDisable()
+    private void OnDisable()
     {
         GroundingLevelUIManager.clickedButton -= OnClickedSomeButton;
         GroundingLevelUIManager.startStage -= OnStartStage;
     }
 
     // dont let any intercation mid animation
-    void OnClickedSomeButton(string chosenOption)
+    private void OnClickedSomeButton(string chosenOption)
     {
         myButton.interactable = false;
     }
     // when the stage starts, "reset" the button
-    void OnStartStage()
+    private void OnStartStage()
     {
         myButton.interactable = true;
         ColorBlock buttonColors = myButton.colors;
 
         var newColor = buttonColors.disabledColor;
         newColor.a = 1f;
-        
+
         buttonColors.disabledColor = newColor;
         myButton.colors = buttonColors;
 
@@ -86,10 +86,10 @@ public class GroundingLevelButton : MonoBehaviour
         myButton.transition = Selectable.Transition.ColorTint;
         GroundingLevelUIManager.clickedButton?.Invoke(myOptionText.text);
     }
-    
+
 
     // Update function
-    private void Update() 
+    private void Update()
     {
         if (isMoving)
         {
@@ -105,7 +105,7 @@ public class GroundingLevelButton : MonoBehaviour
     /// after set ammount of time
     /// let the filling pot know sand should fall, and start hiding the image
     /// </summary>
-    IEnumerator StartDissolvingCoroutine()
+    private IEnumerator StartDissolvingCoroutine()
     {
         yield return new WaitForSecondsRealtime(timeBetweenReachingToDissapearing);
 
@@ -117,7 +117,7 @@ public class GroundingLevelButton : MonoBehaviour
     /// moving the object in the direction of the pouring spot in moveSpeed speed.
     /// </summary>
     /// <param name="deltaTime"> the deltaTime to lean on (can be changed to Time.fixedDeltaTime if necc) </param>
-    void MoveTowardsDestination(float deltaTime)
+    private void MoveTowardsDestination(float deltaTime)
     {
         Vector3 direction = pouringSpot.position - transform.position;
 
@@ -138,17 +138,18 @@ public class GroundingLevelButton : MonoBehaviour
     /// slowly hide image until button should be deleted
     /// </summary>
     /// <param name="deltaTime"></param>
-    void DisappearImage(float deltaTime)
+    private void DisappearImage(float deltaTime)
     {
         ColorBlock buttonColors = myButton.colors;
 
         var newColor = buttonColors.disabledColor;
         newColor.a -= disappearingSpeed * deltaTime;
-        
+
         buttonColors.disabledColor = newColor;
         myButton.colors = buttonColors;
 
-        if (newColor.a <= 0){
+        if (newColor.a <= 0)
+        {
             isDissolving = false;
             gameObject.SetActive(false);
             groundingStageUI.FinishedStage();

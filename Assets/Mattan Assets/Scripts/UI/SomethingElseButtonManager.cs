@@ -9,22 +9,23 @@ public class SomethingElseButtonManager : MonoBehaviour
 {
     [SerializeField] private Button myButton;
 
-    void OnEnable()
+    private void OnEnable()
     {
         GroundingLevelUIManager.clickedButton += OnClickedSomeButton;
         GroundingLevelUIManager.startStage += OnStartStage;
     }
 
-    void OnDisable(){
+    private void OnDisable()
+    {
         GroundingLevelUIManager.clickedButton -= OnClickedSomeButton;
         GroundingLevelUIManager.startStage -= OnStartStage;
     }
 
-    void OnClickedSomeButton(string chosenOption)
+    private void OnClickedSomeButton(string chosenOption)
     {
         myButton.interactable = false;
     }
-    void OnStartStage()
+    private void OnStartStage()
     {
         myButton.interactable = true;
         myButton.gameObject.SetActive(true);
