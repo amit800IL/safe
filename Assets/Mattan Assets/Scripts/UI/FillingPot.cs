@@ -18,16 +18,14 @@ public class FillingPot : MonoBehaviour, ISavable
     [SerializeField] private float maxCapacity = 1f;
     [SerializeField] private float startingFillingAmount = 0.15f;
     [SerializeField] private float fillingSpeed = 0.2f;
+    [SerializeField] private float currentFillAmount = 0.15f;
 
     float nextFillingAmount = 0f;
     bool isPouring = false;
 
-    [SerializeField] private float currentFillAmount = 0f;
-
-
     private void Awake()
     {
-        fillImage.fillAmount = startingFillingAmount;
+        fillImage.fillAmount = currentFillAmount;
     }
 
     /// <summary>
@@ -63,8 +61,6 @@ public class FillingPot : MonoBehaviour, ISavable
             {
                 FinishedPouring();
             }
-
-            DataSavingManager.Instance.SaveGame();
         }
     }
 
@@ -78,6 +74,7 @@ public class FillingPot : MonoBehaviour, ISavable
 
         currentFillAmount = fillImage.fillAmount;
 
+        DataSavingManager.Instance.SaveGame();
     }
 
     public void SaveData(ref GameData gameData)

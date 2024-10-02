@@ -7,5 +7,5 @@ public class GameData
 {
     public List<LevelObject> levelObjects;
 
-    public float pourImageFill;
+    public float pourImageFill = 0.15f;
 }
