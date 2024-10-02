@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FillingPot : MonoBehaviour {
+public class FillingPot : MonoBehaviour, ISavable
+{
 
     [Header("References")]
     [SerializeField] private Image fillImage;
-    [SerializeField] public Transform pouringSpot; 
+    [SerializeField] public Transform pouringSpot;
 
     [Space, Header("Animation Variables")]
     [SerializeField] private Animator sandDotsAnimator;
@@ -16,10 +17,12 @@ public class FillingPot : MonoBehaviour {
     [Space, Header("Variables")]
     [SerializeField] private float maxCapacity = 1f;
     [SerializeField] private float startingFillingAmount = 0.15f;
-    [SerializeField] private float fillingSpeed  = 0.2f;
+    [SerializeField] private float fillingSpeed = 0.2f;
 
     float nextFillingAmount = 0f;
     bool isPouring = false;
+
+    [SerializeField] private float currentFillAmount = 0f;
 
 
     private void Awake()
@@ -56,9 +59,12 @@ public class FillingPot : MonoBehaviour {
         {
             fillImage.fillAmount += fillingSpeed * Time.deltaTime;
 
-            if (fillImage.fillAmount >= nextFillingAmount){
+            if (fillImage.fillAmount >= nextFillingAmount)
+            {
                 FinishedPouring();
             }
+
+            DataSavingManager.Instance.SaveGame();
         }
     }
 
@@ -69,5 +75,18 @@ public class FillingPot : MonoBehaviour {
     {
         sandDotsAnimator.SetTrigger(finishedPouringTrigger);
         isPouring = false;
+
+        currentFillAmount = fillImage.fillAmount;
+
+    }
+
+    public void SaveData(ref GameData gameData)
+    {
+        gameData.pourImageFill = currentFillAmount;
+    }
+
+    public void LoadData(GameData gameData)
+    {
+        currentFillAmount = gameData.pourImageFill;
     }
 }
