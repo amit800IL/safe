@@ -37,7 +37,7 @@ public class DataSavingManager : MonoBehaviour
 
     private List<ISavable> FindAllDataSavers()
     {
-        IEnumerable<ISavable> dataSavers = FindObjectsOfType<MonoBehaviour>().OfType<ISavable>();
+        IEnumerable<ISavable> dataSavers = Resources.FindObjectsOfTypeAll<MonoBehaviour>().OfType<ISavable>();
 
         return new List<ISavable>(dataSavers);
     }
@@ -45,7 +45,10 @@ public class DataSavingManager : MonoBehaviour
     {
         foreach (ISavable saverObject in dataSavingObjects)
         {
-            saverObject.SaveData(ref gameData);
+            if (saverObject != null)
+            {
+                saverObject.SaveData(ref gameData);
+            }
         }
 
         fileDataHandler.Save(gameData);
@@ -61,7 +64,10 @@ public class DataSavingManager : MonoBehaviour
 
         foreach (ISavable saverObject in dataSavingObjects)
         {
-            saverObject.LoadData(gameData);
+            if (saverObject != null)
+            {
+                saverObject.LoadData(gameData);
+            }
         }
     }
 }

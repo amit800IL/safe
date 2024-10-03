@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+[System.Serializable]
 public class FillingPot : MonoBehaviour, ISavable
 {
 
@@ -16,7 +17,6 @@ public class FillingPot : MonoBehaviour, ISavable
 
     [Space, Header("Variables")]
     [SerializeField] private float maxCapacity = 1f;
-    [SerializeField] private float startingFillingAmount = 0.15f;
     [SerializeField] private float fillingSpeed = 0.2f;
     [SerializeField] private float currentFillAmount = 0.15f;
 
@@ -70,20 +70,23 @@ public class FillingPot : MonoBehaviour, ISavable
     public void FinishedPouring()
     {
         sandDotsAnimator.SetTrigger(finishedPouringTrigger);
-        isPouring = false;
 
         currentFillAmount = fillImage.fillAmount;
 
+        Debug.Log("Finished pouring. Current fill amount: " + currentFillAmount);
+
         DataSavingManager.Instance.SaveGame();
+
+        isPouring = false;
     }
 
     public void SaveData(ref GameData gameData)
     {
-        gameData.pourImageFill = currentFillAmount;
+        gameData.pourImageFill = this.currentFillAmount;
     }
 
     public void LoadData(GameData gameData)
     {
-        currentFillAmount = gameData.pourImageFill;
+        this.currentFillAmount = gameData.pourImageFill;
     }
 }

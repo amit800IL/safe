@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class GameData 
 {
-    public List<LevelObject> levelObjects;
+    public List<LevelObject> levelObjects = new List<LevelObject>();
 
-    public float pourImageFill = 0.15f;
+    public float pourImageFill = 0f;
 }
