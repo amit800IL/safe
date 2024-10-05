@@ -6,7 +6,7 @@ public class DataSavingManager : MonoBehaviour
 {
     public static DataSavingManager Instance { get; private set; }
 
-    Dictionary<int, GameData> levelObjectDataLinker = new Dictionary<int, GameData>();
+    Dictionary<LevelObjectID, GameData> levelObjectDataLinker = new Dictionary<LevelObjectID, GameData>();
 
     [SerializeField] private GameData gameData;
 
@@ -27,16 +27,10 @@ public class DataSavingManager : MonoBehaviour
             Destroy(Instance);
         }
 
-        gameData ??= new GameData();
-    }
-
-
-    private void Start()
-    {
+        gameData = new GameData();
         this.fileDataHandler = new FileDataHandler(Application.persistentDataPath, FileName);
         this.dataSavingObjects = FindAllDataSavers();
-
-        LoadGame(gameData.LevelIndex);
+        LoadGame(gameData.Clone().LevelIndex);
     }
 
     private List<ISavable> FindAllDataSavers()
@@ -45,7 +39,7 @@ public class DataSavingManager : MonoBehaviour
 
         return new List<ISavable>(dataSavers);
     }
-    public void SaveGame(int levelIndex)
+    public void SaveGame(LevelObjectID levelIndex)
     {
         gameData.LevelIndex = levelIndex;
 
@@ -57,31 +51,28 @@ public class DataSavingManager : MonoBehaviour
             }
         }
 
-        fileDataHandler.Save(gameData);
+        GameData gameDataClone = gameData.Clone();
+        fileDataHandler.Save(gameDataClone);
 
-        levelObjectDataLinker[levelIndex] = gameData;
+        levelObjectDataLinker[levelIndex] = gameDataClone;
     }
 
-    public void RegisterIndex(int levelIndex)
+    public void LoadGame(LevelObjectID levelIndex)
     {
         gameData.LevelIndex = levelIndex;
 
-        levelObjectDataLinker[levelIndex] = gameData;
-    }
-
-    public void LoadGame(int levelIndex)
-    {
-        gameData.LevelIndex = levelIndex;
+        gameData.Clone().LevelIndex = levelIndex;
 
         if (levelObjectDataLinker.TryGetValue(levelIndex, out GameData loadedGameData))
         {
-            this.gameData = loadedGameData;
+            this.gameData = loadedGameData.Clone();
+
         }
         else
         {
             this.gameData = fileDataHandler.Load();
 
-            levelObjectDataLinker[levelIndex] = this.gameData;
+            levelObjectDataLinker[levelIndex] = this.gameData.Clone();
         }
 
         foreach (ISavable saverObject in dataSavingObjects)
@@ -91,6 +82,5 @@ public class DataSavingManager : MonoBehaviour
                 saverObject.LoadData(this.gameData);
             }
         }
-
     }
 }

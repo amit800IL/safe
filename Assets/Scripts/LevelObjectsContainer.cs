@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LevelObjectsContainer : MonoBehaviour, ISavable
 {
-    [SerializeField] private int levelObjectContainerIndex;
+    [SerializeField] private LevelObjectID levelObjectContainerIndex;
 
     private int LevelCollectivePrecent;
 
@@ -12,14 +12,10 @@ public class LevelObjectsContainer : MonoBehaviour, ISavable
 
     [SerializeField] private List<LevelObject> levelObjects = new List<LevelObject>();
 
-    private void Start()
-    {
-        DataSavingManager.Instance.RegisterIndex(levelObjectContainerIndex);
-        DataSavingManager.Instance.LoadGame(levelObjectContainerIndex);
-    }
-
     public void ActivateLevels()
     {
+        DataSavingManager.Instance.LoadGame(levelObjectContainerIndex);
+
         foreach (LevelObject levelObj in progressLevelobjects)
         {
             if (levelObj != null)
@@ -48,7 +44,7 @@ public class LevelObjectsContainer : MonoBehaviour, ISavable
     {
         gameData.LevelIndex = levelObjectContainerIndex;
 
-        gameData.levelObjects = progressLevelobjects; 
+        gameData.levelObjects = progressLevelobjects;
 
     }
 
@@ -68,4 +64,10 @@ public class LevelObjectsContainer : MonoBehaviour, ISavable
         }
     }
 
+}
+
+public enum LevelObjectID
+{
+    GroundingLevel,
+    LogicalAndMultipleChoiceQuestions,
 }
