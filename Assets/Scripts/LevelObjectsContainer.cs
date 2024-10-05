@@ -1,19 +1,34 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class LevelObjectsContainer : MonoBehaviour, ISavable
 {
+    [SerializeField] private int levelObjectContainerIndex;
+
     private int LevelCollectivePrecent;
 
     [SerializeField] private List<LevelObject> progressLevelobjects = new List<LevelObject>();
 
     [SerializeField] private List<LevelObject> levelObjects = new List<LevelObject>();
+
+    private void Start()
+    {
+        DataSavingManager.Instance.RegisterIndex(levelObjectContainerIndex);
+        DataSavingManager.Instance.LoadGame(levelObjectContainerIndex);
+    }
+
     public void ActivateLevels()
     {
         foreach (LevelObject levelObj in progressLevelobjects)
         {
-            levelObj.gameObject.SetActive(true);
+            if (levelObj != null)
+            {
+                levelObj.gameObject.SetActive(false);
+            }
         }
+
+        progressLevelobjects.Last().gameObject.SetActive(true);
     }
 
     public void RegisterLevelEnd()
@@ -27,18 +42,22 @@ public class LevelObjectsContainer : MonoBehaviour, ISavable
             }
         }
 
-        DataSavingManager.Instance.SaveGame();
+        DataSavingManager.Instance.SaveGame(levelObjectContainerIndex);
     }
     public void SaveData(ref GameData gameData)
     {
-        gameData.levelObjects = progressLevelobjects;
+        gameData.LevelIndex = levelObjectContainerIndex;
+
+        gameData.levelObjects = progressLevelobjects; 
+
     }
 
     public void LoadData(GameData gameData)
     {
-        //gameData.levelObjects.Clear();
-
-        progressLevelobjects = gameData.levelObjects;
+        if (levelObjectContainerIndex == gameData.LevelIndex)
+        {
+            progressLevelobjects = gameData.levelObjects;
+        }
     }
 
     public void RegisterPrecenet()

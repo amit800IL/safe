@@ -4,6 +4,8 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+
+[RequireComponent(typeof(LevelObject))]
 public class MultipleChoiceQuestion : MonoBehaviour
 {
     [SerializeField] private Button continueButton;
@@ -36,7 +38,6 @@ public class MultipleChoiceQuestion : MonoBehaviour
             {
                 buttonClicked.interactable = true;
             }
-
         }
 
         if (OddNumberButtons.All(button => !button.interactable))

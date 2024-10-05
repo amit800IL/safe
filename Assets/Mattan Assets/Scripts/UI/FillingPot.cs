@@ -4,6 +4,8 @@ using UnityEngine.UI;
 public class FillingPot : MonoBehaviour, ISavable
 {
 
+    GameData gameData;
+
     [Header("References")]
     [SerializeField] private Image fillImage;
     [SerializeField] public Transform pouringSpot;
@@ -74,13 +76,15 @@ public class FillingPot : MonoBehaviour, ISavable
 
         Debug.Log("Finished pouring. Current fill amount: " + currentFillAmount);
 
-        DataSavingManager.Instance.SaveGame();
+        DataSavingManager.Instance.SaveGame(gameData.LevelIndex);
 
         isPouring = false;
     }
 
     public void SaveData(ref GameData gameData)
     {
+        this.gameData = gameData;
+
         gameData.pourImageFill = this.currentFillAmount;
     }
 

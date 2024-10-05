@@ -6,6 +6,8 @@ public class DataSavingManager : MonoBehaviour
 {
     public static DataSavingManager Instance { get; private set; }
 
+    Dictionary<int, GameData> levelObjectDataLinker = new Dictionary<int, GameData>();
+
     [SerializeField] private GameData gameData;
 
     private const string FileName = "DataFile";
@@ -24,6 +26,8 @@ public class DataSavingManager : MonoBehaviour
         {
             Destroy(Instance);
         }
+
+        gameData ??= new GameData();
     }
 
 
@@ -32,7 +36,7 @@ public class DataSavingManager : MonoBehaviour
         this.fileDataHandler = new FileDataHandler(Application.persistentDataPath, FileName);
         this.dataSavingObjects = FindAllDataSavers();
 
-        LoadGame();
+        LoadGame(gameData.LevelIndex);
     }
 
     private List<ISavable> FindAllDataSavers()
@@ -41,8 +45,10 @@ public class DataSavingManager : MonoBehaviour
 
         return new List<ISavable>(dataSavers);
     }
-    public void SaveGame()
+    public void SaveGame(int levelIndex)
     {
+        gameData.LevelIndex = levelIndex;
+
         foreach (ISavable saverObject in dataSavingObjects)
         {
             if (saverObject != null)
@@ -52,22 +58,39 @@ public class DataSavingManager : MonoBehaviour
         }
 
         fileDataHandler.Save(gameData);
-    }
-    public void LoadGame()
-    {
-        this.gameData = fileDataHandler.Load();
 
-        if (gameData == null)
+        levelObjectDataLinker[levelIndex] = gameData;
+    }
+
+    public void RegisterIndex(int levelIndex)
+    {
+        gameData.LevelIndex = levelIndex;
+
+        levelObjectDataLinker[levelIndex] = gameData;
+    }
+
+    public void LoadGame(int levelIndex)
+    {
+        gameData.LevelIndex = levelIndex;
+
+        if (levelObjectDataLinker.TryGetValue(levelIndex, out GameData loadedGameData))
         {
-            gameData = new GameData();
+            this.gameData = loadedGameData;
+        }
+        else
+        {
+            this.gameData = fileDataHandler.Load();
+
+            levelObjectDataLinker[levelIndex] = this.gameData;
         }
 
         foreach (ISavable saverObject in dataSavingObjects)
         {
             if (saverObject != null)
             {
-                saverObject.LoadData(gameData);
+                saverObject.LoadData(this.gameData);
             }
         }
+
     }
 }

@@ -1,10 +1,10 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 [System.Serializable]
-public class GameData 
+public class GameData
 {
+    public int LevelIndex;
+
     public List<LevelObject> levelObjects = new List<LevelObject>();
 
     public float pourImageFill = 0f;

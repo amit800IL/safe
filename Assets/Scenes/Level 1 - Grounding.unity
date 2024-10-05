@@ -8222,6 +8222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameData:
+    LevelIndex: 0
     levelObjects: []
     pourImageFill: 0
 --- !u!4 &1736926221
@@ -9900,6 +9901,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45aca2cb3798af142bc02adeb0d4133d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelObjectContainerIndex: 1
   progressLevelobjects: []
   levelObjects:
   - {fileID: 1063084178}
