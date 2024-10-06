@@ -12,6 +12,11 @@ public class LevelObjectsContainer : MonoBehaviour, ISavable
 
     [SerializeField] private List<LevelObject> levelObjects = new List<LevelObject>();
 
+    private void Start()
+    {
+        DataSavingManager.Instance.LoadGame(levelObjectContainerIndex);
+    }
+
     public void ActivateLevels()
     {
         DataSavingManager.Instance.LoadGame(levelObjectContainerIndex);
@@ -42,17 +47,47 @@ public class LevelObjectsContainer : MonoBehaviour, ISavable
     }
     public void SaveData(ref GameData gameData)
     {
-        gameData.LevelIndex = levelObjectContainerIndex;
+        if (gameData is GroundinData)
+        {
+            GroundinData groundinData = gameData as GroundinData;
 
-        gameData.levelObjects = progressLevelobjects;
+            if (levelObjectContainerIndex == LevelObjectID.GroundingLevel)
+            {
+                groundinData.levelObjects = progressLevelobjects;
+            }
+
+        }
+        else if (gameData is LogicalQuestionData)
+        {
+            LogicalQuestionData logicalQuestionData = gameData as LogicalQuestionData;
+
+            if (levelObjectContainerIndex == LevelObjectID.LogicalAndMultipleChoiceQuestions)
+            {
+                logicalQuestionData.levelObjects = progressLevelobjects;
+            }
+        }
 
     }
 
     public void LoadData(GameData gameData)
     {
-        if (levelObjectContainerIndex == gameData.LevelIndex)
+        if (gameData is GroundinData)
         {
-            progressLevelobjects = gameData.levelObjects;
+            GroundinData groundinData = gameData as GroundinData;
+
+            if (levelObjectContainerIndex == LevelObjectID.GroundingLevel)
+            {
+                progressLevelobjects = groundinData.levelObjects;
+            }
+        }
+        else if (gameData is LogicalQuestionData)
+        {
+            LogicalQuestionData logicalQuestionData = gameData as LogicalQuestionData;
+
+            if (levelObjectContainerIndex == LevelObjectID.LogicalAndMultipleChoiceQuestions)
+            {
+                progressLevelobjects = logicalQuestionData.levelObjects;
+            }
         }
     }
 
