@@ -6,13 +6,13 @@ public class LevelObject<T> : MonoBehaviour where T : LevelObject<T>
 {
     public static Action<int, List<LevelObject<T>>> OnLevelDone { get; set; }
 
-    [SerializeField] private int LevelNumber;
-    private void Start()
+    [SerializeField] protected int LevelNumber;
+    protected virtual void Start()
     {
        OnLevelDone += OnLevelEnded;
     }
 
-    public void OnLevelEnded(int levelIndex, List<LevelObject<T>> levelObjects)
+    protected virtual void OnLevelEnded(int levelIndex, List<LevelObject<T>> levelObjects)
     {
         if (!levelObjects.Contains(this))
             levelObjects.Add(this);
