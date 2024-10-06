@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class LogicalQuestionData : GameData
 {
-    public List<LevelObject> levelObjects = new List<LevelObject>();
+    public List<LevelObject<LogicalQuestionsLevelObject>> levelObjects = new List<LevelObject<LogicalQuestionsLevelObject>>();
     public LogicalQuestionData()
     {
         LevelIndex = LevelObjectID.LogicalAndMultipleChoiceQuestions;

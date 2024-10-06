@@ -8,9 +8,13 @@ public class LevelObjectsContainer : MonoBehaviour, ISavable
 
     private int LevelCollectivePrecent;
 
-    [SerializeField] private List<LevelObject> progressLevelobjects = new List<LevelObject>();
+    [SerializeField] private List<LevelObject<LogicalQuestionsLevelObject>> LogicalLevelObjects = new List<LevelObject<LogicalQuestionsLevelObject>>();
 
-    [SerializeField] private List<LevelObject> levelObjects = new List<LevelObject>();
+    private List<LevelObject<LogicalQuestionsLevelObject>> LogicalLevelProgressObjects = new List<LevelObject<LogicalQuestionsLevelObject>>();
+
+    [SerializeField] private List<LevelObject<GroundingLevelObject>> groundingLevelObjects = new List<LevelObject<GroundingLevelObject>>();
+
+    private List<LevelObject<GroundingLevelObject>> groundingLevelProgressObjects = new List<LevelObject<GroundingLevelObject>>();
 
     private void Start()
     {
@@ -19,83 +23,110 @@ public class LevelObjectsContainer : MonoBehaviour, ISavable
 
     public void ActivateLevels()
     {
-        DataSavingManager.Instance.LoadGame(levelObjectContainerIndex);
-
-        foreach (LevelObject levelObj in progressLevelobjects)
+        if (levelObjectContainerIndex == LevelObjectID.GroundingLevel && groundingLevelObjects.Count != 0)
         {
-            if (levelObj != null)
+            DataSavingManager.Instance.LoadGame(levelObjectContainerIndex);
+
+            foreach (LevelObject<GroundingLevelObject> levelObj in groundingLevelProgressObjects)
             {
-                levelObj.gameObject.SetActive(false);
+                if (levelObj != null)
+                {
+                    levelObj.gameObject.SetActive(false);
+                }
             }
+
+            groundingLevelProgressObjects.Last().gameObject.SetActive(true);
+
         }
 
-        progressLevelobjects.Last().gameObject.SetActive(true);
-    }
+        if (levelObjectContainerIndex == LevelObjectID.LogicalAndMultipleChoiceQuestions && LogicalLevelObjects.Count != 0)
+        {
+            DataSavingManager.Instance.LoadGame(levelObjectContainerIndex);
 
+            foreach (LevelObject<LogicalQuestionsLevelObject> levelObj in LogicalLevelProgressObjects)
+            {
+                if (levelObj != null)
+                {
+                    levelObj.gameObject.SetActive(false);
+                }
+            }
+
+            LogicalLevelProgressObjects.Last().gameObject.SetActive(true);
+
+        }
+    }
     public void RegisterLevelEnd()
     {
-        for (int i = 0; i <= progressLevelobjects.Count; i++)
+        if (levelObjectContainerIndex == LevelObjectID.GroundingLevel && groundingLevelObjects.Count != 0)
         {
-            if (!progressLevelobjects.Contains(levelObjects[i]))
+            for (int i = 0; i <= groundingLevelObjects.Count; i++)
             {
-                LevelButtonsEvents.OnLevelDone.Invoke(i, progressLevelobjects);
-                break;
+                if (!groundingLevelProgressObjects.Contains(groundingLevelObjects[i]))
+                {
+                    LevelObject<GroundingLevelObject>.OnLevelDone.Invoke(i, groundingLevelProgressObjects);
+                    break;
+                }
             }
+
+            DataSavingManager.Instance.SaveGame(levelObjectContainerIndex);
         }
 
-        DataSavingManager.Instance.SaveGame(levelObjectContainerIndex);
+        if (levelObjectContainerIndex == LevelObjectID.LogicalAndMultipleChoiceQuestions && LogicalLevelObjects.Count != 0)
+        {
+            for (int i = 0; i <= LogicalLevelObjects.Count; i++)
+            {
+                if (!LogicalLevelProgressObjects.Contains(LogicalLevelObjects[i]))
+                {
+                    LevelObject<LogicalQuestionsLevelObject>.OnLevelDone.Invoke(i, LogicalLevelProgressObjects);
+                    break;
+                }
+            }
+
+            DataSavingManager.Instance.SaveGame(levelObjectContainerIndex);
+        }
+
     }
     public void SaveData(ref GameData gameData)
     {
-        if (gameData is GroundinData)
+        gameData.LevelIndex = levelObjectContainerIndex;
+
+        if (levelObjectContainerIndex == LevelObjectID.GroundingLevel && groundingLevelObjects.Count != 0)
         {
-            GroundinData groundinData = gameData as GroundinData;
+            GroundinData groundingData = gameData as GroundinData;
 
-            if (levelObjectContainerIndex == LevelObjectID.GroundingLevel)
-            {
-                groundinData.levelObjects = progressLevelobjects;
-            }
-
-        }
-        else if (gameData is LogicalQuestionData)
-        {
-            LogicalQuestionData logicalQuestionData = gameData as LogicalQuestionData;
-
-            if (levelObjectContainerIndex == LevelObjectID.LogicalAndMultipleChoiceQuestions)
-            {
-                logicalQuestionData.levelObjects = progressLevelobjects;
-            }
+            groundingData.levelObjects = groundingLevelProgressObjects;
         }
 
+        if (levelObjectContainerIndex == LevelObjectID.LogicalAndMultipleChoiceQuestions && LogicalLevelObjects.Count != 0)
+        {
+            LogicalQuestionData logicalQuestionaData = gameData as LogicalQuestionData;
+
+            logicalQuestionaData.levelObjects = LogicalLevelProgressObjects;
+        }
     }
 
     public void LoadData(GameData gameData)
     {
-        if (gameData is GroundinData)
+        if (levelObjectContainerIndex == LevelObjectID.GroundingLevel && groundingLevelObjects.Count != 0)
         {
-            GroundinData groundinData = gameData as GroundinData;
+            GroundinData groundingData = gameData as GroundinData;
 
-            if (levelObjectContainerIndex == LevelObjectID.GroundingLevel)
-            {
-                progressLevelobjects = groundinData.levelObjects;
-            }
+            groundingLevelProgressObjects = groundingData.levelObjects;
         }
-        else if (gameData is LogicalQuestionData)
-        {
-            LogicalQuestionData logicalQuestionData = gameData as LogicalQuestionData;
 
-            if (levelObjectContainerIndex == LevelObjectID.LogicalAndMultipleChoiceQuestions)
-            {
-                progressLevelobjects = logicalQuestionData.levelObjects;
-            }
+        if (levelObjectContainerIndex == LevelObjectID.LogicalAndMultipleChoiceQuestions && LogicalLevelObjects.Count != 0)
+        {
+            LogicalQuestionData logicalQuestionaData = gameData as LogicalQuestionData;
+
+            LogicalLevelProgressObjects = logicalQuestionaData.levelObjects;
         }
     }
 
     public void RegisterPrecenet()
     {
-        if (levelObjects != null && levelObjects.Count > 0)
+        if (groundingLevelObjects != null && groundingLevelObjects.Count > 0)
         {
-            LevelCollectivePrecent = 100 / levelObjects.Count;
+            LevelCollectivePrecent = 100 / groundingLevelObjects.Count;
         }
     }
 

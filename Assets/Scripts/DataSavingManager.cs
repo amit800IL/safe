@@ -70,9 +70,12 @@ public class DataSavingManager : MonoBehaviour
                 }
             }
 
-            fileDataHandler.Save(groundinDataLocal);
+            groundLevelData = (GroundinData)groundinDataLocal;
+
+            fileDataHandler.Save(groundLevelData);
         }
-        else if (levelIndex == LevelObjectID.LogicalAndMultipleChoiceQuestions)
+
+        if (levelIndex == LevelObjectID.LogicalAndMultipleChoiceQuestions)
         {
             LevelObjectDataLinker[levelIndex] ??= new LogicalQuestionData();
 
@@ -88,7 +91,9 @@ public class DataSavingManager : MonoBehaviour
                 }
             }
 
-            fileDataHandler.Save(logicalQuestionsDataLocal);
+            logicalQuestionData = (LogicalQuestionData)logicalQuestionsDataLocal;
+
+            fileDataHandler.Save(logicalQuestionData);
         }
     }
 
@@ -111,9 +116,10 @@ public class DataSavingManager : MonoBehaviour
                 }
             }
 
-            groundinDataLocal = fileDataHandler.Load();
+            groundLevelData = fileDataHandler.Load<GroundinData>();
         }
-        else if (levelIndex == LevelObjectID.LogicalAndMultipleChoiceQuestions)
+
+        if (levelIndex == LevelObjectID.LogicalAndMultipleChoiceQuestions)
         {
             LevelObjectDataLinker[levelIndex] ??= new LogicalQuestionData();
 
@@ -129,7 +135,8 @@ public class DataSavingManager : MonoBehaviour
                 }
             }
 
-            logicalQuestionsDataLocal = fileDataHandler.Load();
+
+            logicalQuestionData = fileDataHandler.Load<LogicalQuestionData>();
         }
     }
 }

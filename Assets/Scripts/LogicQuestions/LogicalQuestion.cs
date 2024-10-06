@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(LevelObject))]
+[RequireComponent(typeof(LevelObject<LogicalQuestionsLevelObject>))]
 public class LogicalQuestion : MonoBehaviour
 {
     [SerializeField] private Button continueButton;

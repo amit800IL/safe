@@ -29,11 +29,11 @@ public class FileDataHandler
         }
     }
 
-    public GameData Load()
+    public T Load<T>() where T : GameData
     {
         string fullPath = Path.Combine(dataDirPath, dataFileName);
 
-        GameData loadedData = null;
+        T loadedData = null;
 
         if (File.Exists(fullPath))
         {
@@ -47,7 +47,7 @@ public class FileDataHandler
                 }
             }
 
-            loadedData = JsonUtility.FromJson<GameData>(dataToLoad);
+            loadedData = JsonUtility.FromJson<T>(dataToLoad);
         }
 
         return loadedData;

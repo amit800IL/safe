@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class GroundinData : GameData
 {
-    public List<LevelObject> levelObjects = new List<LevelObject>();
+    public List<LevelObject<GroundingLevelObject>> levelObjects = new List<LevelObject<GroundingLevelObject>>();
 
     public float pourImageFill = 0f;
 
