@@ -6,8 +6,6 @@ public class DataSavingManager : MonoBehaviour
 {
     public static DataSavingManager Instance { get; private set; }
 
-    Dictionary<LevelObjectID, GameData> levelObjectDataLinker = new Dictionary<LevelObjectID, GameData>();
-
     [SerializeField] private GameData gameData;
 
     private const string FileName = "DataFile";
@@ -27,10 +25,11 @@ public class DataSavingManager : MonoBehaviour
             Destroy(Instance);
         }
 
-        gameData = new GameData();
+        gameData ??= new GameData();
         this.fileDataHandler = new FileDataHandler(Application.persistentDataPath, FileName);
         this.dataSavingObjects = FindAllDataSavers();
-        LoadGame(gameData.Clone().LevelIndex);
+
+        //fileDataHandler.Delete();
     }
 
     private List<ISavable> FindAllDataSavers()
@@ -39,10 +38,8 @@ public class DataSavingManager : MonoBehaviour
 
         return new List<ISavable>(dataSavers);
     }
-    public void SaveGame(LevelObjectID levelIndex)
+    public void SaveGame()
     {
-        gameData.LevelIndex = levelIndex;
-
         foreach (ISavable saverObject in dataSavingObjects)
         {
             if (saverObject != null)
@@ -51,29 +48,12 @@ public class DataSavingManager : MonoBehaviour
             }
         }
 
-        GameData gameDataClone = gameData.Clone();
-        fileDataHandler.Save(gameDataClone);
-
-        levelObjectDataLinker[levelIndex] = gameDataClone;
+        fileDataHandler.Save(gameData);
     }
 
-    public void LoadGame(LevelObjectID levelIndex)
+    public void LoadGame()
     {
-        gameData.LevelIndex = levelIndex;
-
-        gameData.Clone().LevelIndex = levelIndex;
-
-        if (levelObjectDataLinker.TryGetValue(levelIndex, out GameData loadedGameData))
-        {
-            this.gameData = loadedGameData.Clone();
-
-        }
-        else
-        {
-            this.gameData = fileDataHandler.Load();
-
-            levelObjectDataLinker[levelIndex] = this.gameData.Clone();
-        }
+        this.gameData = fileDataHandler.Load();
 
         foreach (ISavable saverObject in dataSavingObjects)
         {

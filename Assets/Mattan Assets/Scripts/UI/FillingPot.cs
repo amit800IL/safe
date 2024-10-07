@@ -76,7 +76,7 @@ public class FillingPot : MonoBehaviour, ISavable
 
         Debug.Log("Finished pouring. Current fill amount: " + currentFillAmount);
 
-        DataSavingManager.Instance.SaveGame(gameData.LevelIndex);
+        DataSavingManager.Instance.SaveGame();
 
         isPouring = false;
     }
