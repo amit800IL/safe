@@ -32,7 +32,7 @@ public class LogicLevelObjectsContainer : MonoBehaviour, ISavable
         {
             if (!LogicProgressLevelobjects.Contains(logicLevelObjects[i]))
             {
-                LevelObject.OnLevelDone.Invoke(i, LogicProgressLevelobjects);
+                LevelObject.OnLevelDone.Invoke(LogicProgressLevelobjects);
                 break;
             }
         }

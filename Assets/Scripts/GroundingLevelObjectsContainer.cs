@@ -32,7 +32,7 @@ public class GroundingLevelObjectsContainer : MonoBehaviour, ISavable
         {
             if (!groundProgressLevelObjects.Contains(groundingLevelObjects[i]))
             {
-                LevelObject.OnLevelDone.Invoke(i, groundProgressLevelObjects);
+                LevelObject.OnLevelDone.Invoke(groundProgressLevelObjects);
                 break;
             }
         }
