@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelObject<T> : MonoBehaviour where T : LevelObject<T>
+public class LevelObject : MonoBehaviour 
 {
-    public static Action<int, List<LevelObject<T>>> OnLevelDone { get; set; }
+    public static Action<int, List<LevelObject>> OnLevelDone { get; set; }
 
     [SerializeField] protected int LevelNumber;
     protected virtual void Start()
@@ -12,7 +12,7 @@ public class LevelObject<T> : MonoBehaviour where T : LevelObject<T>
        OnLevelDone += OnLevelEnded;
     }
 
-    protected virtual void OnLevelEnded(int levelIndex, List<LevelObject<T>> levelObjects)
+    protected virtual void OnLevelEnded(int levelIndex, List<LevelObject> levelObjects)
     {
         if (!levelObjects.Contains(this))
             levelObjects.Add(this);

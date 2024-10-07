@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(LevelObject<LogicalQuestionsLevelObject>))]
+[RequireComponent(typeof(LevelObject))]
 public class MultipleChoiceQuestion : MonoBehaviour
 {
     [SerializeField] private Button continueButton;

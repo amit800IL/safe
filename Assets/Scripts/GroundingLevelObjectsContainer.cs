@@ -10,20 +10,20 @@ public class GroundingLevelObjectsContainer : MonoBehaviour, ISavable
     private List<LevelObject> groundProgressLevelObjects = new List<LevelObject>();
 
     [SerializeField] private List<LevelObject> groundingLevelObjects = new List<LevelObject>();
-    public void ActivateLevels()
-    {
-        DataSavingManager.Instance.LoadGame();
+    //public void ActivateLevels()
+    //{
+    //    DataSavingManager.Instance.LoadGame();
 
-        foreach (LevelObject levelObj in groundProgressLevelObjects)
-        {
-            if (levelObj != null)
-            {
-                levelObj.gameObject.SetActive(false);
-            }
-        }
+    //    foreach (LevelObject levelObj in groundProgressLevelObjects)
+    //    {
+    //        if (levelObj != null)
+    //        {
+    //            levelObj.gameObject.SetActive(false);
+    //        }
+    //    }
 
-        groundProgressLevelObjects.Last().gameObject.SetActive(true);
-    }
+    //    groundProgressLevelObjects.Last().gameObject.SetActive(true);
+    //}
 
     public void RegisterLevelEnd()
     {
@@ -32,7 +32,7 @@ public class GroundingLevelObjectsContainer : MonoBehaviour, ISavable
         {
             if (!groundProgressLevelObjects.Contains(groundingLevelObjects[i]))
             {
-                LevelButtonsEvents.OnLevelDone.Invoke(i, groundProgressLevelObjects);
+                LevelObject.OnLevelDone.Invoke(i, groundProgressLevelObjects);
                 break;
             }
         }

@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MainScene.unity
     guid: d66d9eaf16487a94fa2d4e076b789948
   - enabled: 1
-    path: Assets/Scenes/GameScene.unity
+    path: Assets/Mattan Assets/GameScene.unity
     guid: 33fdaaaf7561a3047b38f3ea15dcee1c
   - enabled: 1
     path: Assets/Scenes/LogicalQuestions.unity

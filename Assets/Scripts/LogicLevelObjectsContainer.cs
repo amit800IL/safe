@@ -10,20 +10,20 @@ public class LogicLevelObjectsContainer : MonoBehaviour, ISavable
 
     [SerializeField] private List<LevelObject> logicLevelObjects = new List<LevelObject>();
 
-    public void ActivateLevels()
-    {
-        DataSavingManager.Instance.LoadGame();
+    //public void ActivateLevels()
+    //{
+    //    DataSavingManager.Instance.LoadGame();
 
-        foreach (LevelObject levelObj in LogicProgressLevelobjects)
-        {
-            if (levelObj != null)
-            {
-                levelObj.gameObject.SetActive(false);
-            }
-        }
+    //    foreach (LevelObject levelObj in LogicProgressLevelobjects)
+    //    {
+    //        if (levelObj != null)
+    //        {
+    //            levelObj.gameObject.SetActive(false);
+    //        }
+    //    }
 
-        LogicProgressLevelobjects.Last().gameObject.SetActive(true);
-    }
+    //    LogicProgressLevelobjects.Last().gameObject.SetActive(true);
+    //}
 
     public void RegisterLevelEnd()
     {
@@ -32,7 +32,7 @@ public class LogicLevelObjectsContainer : MonoBehaviour, ISavable
         {
             if (!LogicProgressLevelobjects.Contains(logicLevelObjects[i]))
             {
-                LevelButtonsEvents.OnLevelDone.Invoke(i, LogicProgressLevelobjects);
+                LevelObject.OnLevelDone.Invoke(i, LogicProgressLevelobjects);
                 break;
             }
         }

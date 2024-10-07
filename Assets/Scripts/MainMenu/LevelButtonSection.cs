@@ -8,8 +8,6 @@ public class LevelButtonSection : MonoBehaviour
     [SerializeField] private GameObject[] levelObjects;
     public void ActivateLogicLevel(LevelObject levelObject)
     {
-        DataSavingManager.Instance.LoadGame();
-
         foreach (GameObject level in levelObjects)
         {
             level.gameObject.SetActive(false);
@@ -18,5 +16,9 @@ public class LevelButtonSection : MonoBehaviour
         levelObject.gameObject.SetActive(true);
 
         LevelSection.SetActive(true);
+
+        buttonsSection.SetActive(false);
+
+        DataSavingManager.Instance.LoadGame();
     }
 }
