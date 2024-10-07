@@ -6,12 +6,7 @@ public class DataSavingManager : MonoBehaviour
 {
     public static DataSavingManager Instance { get; private set; }
 
-    Dictionary<LevelObjectID, GameData> levelObjectDataLinker = new Dictionary<LevelObjectID, GameData>();
-    public Dictionary<LevelObjectID, GameData> LevelObjectDataLinker { get => levelObjectDataLinker; private set => levelObjectDataLinker = value; }
-
-    [SerializeField] private GroundinData groundLevelData;
-
-    [SerializeField] private LogicalQuestionData logicalQuestionData;
+    [SerializeField] private GameData gameData;
 
     private const string FileName = "DataFile";
 
@@ -30,20 +25,11 @@ public class DataSavingManager : MonoBehaviour
             Destroy(Instance);
         }
 
-        if (!levelObjectDataLinker.ContainsKey(LevelObjectID.GroundingLevel))
-        {
-            levelObjectDataLinker.Add(LevelObjectID.GroundingLevel, groundLevelData);
-        }
-
-        if (!levelObjectDataLinker.ContainsKey(LevelObjectID.LogicalAndMultipleChoiceQuestions))
-        {
-            levelObjectDataLinker.Add(LevelObjectID.LogicalAndMultipleChoiceQuestions, logicalQuestionData);
-        }
-
+        gameData ??= new GameData();
         this.fileDataHandler = new FileDataHandler(Application.persistentDataPath, FileName);
         this.dataSavingObjects = FindAllDataSavers();
 
-
+        //fileDataHandler.Delete();
     }
 
     private List<ISavable> FindAllDataSavers()
@@ -52,91 +38,29 @@ public class DataSavingManager : MonoBehaviour
 
         return new List<ISavable>(dataSavers);
     }
-    public void SaveGame(LevelObjectID levelIndex)
+    public void SaveGame()
     {
-        if (levelIndex == LevelObjectID.GroundingLevel)
+        foreach (ISavable saverObject in dataSavingObjects)
         {
-            LevelObjectDataLinker[levelIndex] ??= new GroundinData();
-
-            groundLevelData = LevelObjectDataLinker[levelIndex] as GroundinData;
-
-            GameData groundinDataLocal = groundLevelData;
-
-            foreach (ISavable saverObject in dataSavingObjects)
+            if (saverObject != null)
             {
-                if (saverObject != null)
-                {
-                    saverObject.SaveData(ref groundinDataLocal);
-                }
+                saverObject.SaveData(ref gameData);
             }
-
-            groundLevelData = (GroundinData)groundinDataLocal;
-
-            fileDataHandler.Save(groundLevelData);
         }
 
-        if (levelIndex == LevelObjectID.LogicalAndMultipleChoiceQuestions)
-        {
-            LevelObjectDataLinker[levelIndex] ??= new LogicalQuestionData();
-
-            logicalQuestionData = LevelObjectDataLinker[levelIndex] as LogicalQuestionData;
-
-            GameData logicalQuestionsDataLocal = logicalQuestionData;
-
-            foreach (ISavable saverObject in dataSavingObjects)
-            {
-                if (saverObject != null)
-                {
-                    saverObject.SaveData(ref logicalQuestionsDataLocal);
-                }
-            }
-
-            logicalQuestionData = (LogicalQuestionData)logicalQuestionsDataLocal;
-
-            fileDataHandler.Save(logicalQuestionData);
-        }
+        fileDataHandler.Save(gameData);
     }
 
-    public void LoadGame(LevelObjectID levelIndex)
+    public void LoadGame()
     {
+        this.gameData = fileDataHandler.Load();
 
-        if (levelIndex == LevelObjectID.GroundingLevel)
+        foreach (ISavable saverObject in dataSavingObjects)
         {
-            LevelObjectDataLinker[levelIndex] ??= new GroundinData();
-
-            groundLevelData = LevelObjectDataLinker[levelIndex] as GroundinData;
-
-            GameData groundinDataLocal = groundLevelData;
-
-            foreach (ISavable saverObject in dataSavingObjects)
+            if (saverObject != null)
             {
-                if (saverObject != null)
-                {
-                    saverObject.LoadData(groundinDataLocal);
-                }
+                saverObject.LoadData(this.gameData);
             }
-
-            groundLevelData = fileDataHandler.Load<GroundinData>();
-        }
-
-        if (levelIndex == LevelObjectID.LogicalAndMultipleChoiceQuestions)
-        {
-            LevelObjectDataLinker[levelIndex] ??= new LogicalQuestionData();
-
-            logicalQuestionData = LevelObjectDataLinker[levelIndex] as LogicalQuestionData;
-
-            GameData logicalQuestionsDataLocal = logicalQuestionData;
-
-            foreach (ISavable saverObject in dataSavingObjects)
-            {
-                if (saverObject != null)
-                {
-                    saverObject.LoadData(logicalQuestionsDataLocal);
-                }
-            }
-
-
-            logicalQuestionData = fileDataHandler.Load<LogicalQuestionData>();
         }
     }
 }

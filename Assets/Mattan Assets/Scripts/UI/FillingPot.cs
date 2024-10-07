@@ -76,34 +76,20 @@ public class FillingPot : MonoBehaviour, ISavable
 
         Debug.Log("Finished pouring. Current fill amount: " + currentFillAmount);
 
-        DataSavingManager.Instance.SaveGame(LevelObjectID.GroundingLevel);
+        DataSavingManager.Instance.SaveGame();
 
         isPouring = false;
     }
 
     public void SaveData(ref GameData gameData)
     {
-        if (gameData is GameData)
-        {
-            GroundinData groundData = gameData as GroundinData;
+        this.gameData = gameData;
 
-            if (groundData != null)
-            {
-                groundData.pourImageFill = this.currentFillAmount;
-            }
-        }
+        gameData.pourImageFill = this.currentFillAmount;
     }
 
     public void LoadData(GameData gameData)
     {
-        if (gameData is GameData)
-        {
-            GroundinData groundData = gameData as GroundinData;
-
-            if (groundData != null)
-            {
-                this.currentFillAmount = groundData.pourImageFill;
-            }
-        }
+        this.currentFillAmount = gameData.pourImageFill;
     }
 }
