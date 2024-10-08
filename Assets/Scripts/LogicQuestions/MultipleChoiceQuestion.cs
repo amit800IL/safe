@@ -1,4 +1,3 @@
-
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -8,13 +7,29 @@ using UnityEngine.UI;
 [RequireComponent(typeof(LevelObject))]
 public class MultipleChoiceQuestion : MonoBehaviour
 {
+    [SerializeField] private TextMeshProUGUI questionText;
+    [SerializeField] private MultipleChoiceQuestionSO multipleChoiceQuestionSO;
     [SerializeField] private Button continueButton;
     [SerializeField] private Button[] multipleChoiceButton;
 
     private string buttonText;
     List<Button> OddNumberButtons = new List<Button>();
+
+
     private void Start()
     {
+        questionText.text = multipleChoiceQuestionSO.questionText;
+
+        for (int i = 0; i < multipleChoiceButton.Length; i++)
+        {
+            TextMeshProUGUI buttonText = multipleChoiceButton[i].GetComponentInChildren<TextMeshProUGUI>();
+
+            if (buttonText != null)
+            {
+                buttonText.text = multipleChoiceQuestionSO.choicesText[i];
+            }
+        }
+
         foreach (Button button in multipleChoiceButton)
         {
             button.onClick.AddListener(() => ChooseNumbers(button));
@@ -52,9 +67,9 @@ public class MultipleChoiceQuestion : MonoBehaviour
 
         if (buttonText != null)
         {
-            int buttonTextNumber = int.Parse(buttonText);
+            bool IsNumberValid = int.TryParse(buttonText, out int number);
 
-            return buttonTextNumber % 2 == 1;
+            return IsNumberValid ? number % 2 == 1 : false;
         }
 
         return false;
