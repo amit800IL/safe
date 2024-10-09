@@ -6,17 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainScene.unity
-    guid: d66d9eaf16487a94fa2d4e076b789948
-  - enabled: 1
-    path: Assets/Mattan Assets/GameScene.unity
-    guid: 33fdaaaf7561a3047b38f3ea15dcee1c
-  - enabled: 1
-    path: Assets/Scenes/LogicalQuestions.unity
-    guid: 4f14c1bb60672f2499dbf3efa18feab3
-  - enabled: 1
-    path: Assets/Scenes/SupportExresize.unity
-    guid: fba1d4c18cb129948857b137678a69a4
+    path: Assets/Scenes/GameScene.unity
+    guid: 185c6468577fd104c924545d0d3431ba
   m_configObjects:
     com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: 7828cbddd8db68741a347e68958de7c6, type: 2}
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 54f25cd947020e64bb2ef48a19d29d18, type: 2}
