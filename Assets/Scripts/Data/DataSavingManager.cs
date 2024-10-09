@@ -28,6 +28,8 @@ public class DataSavingManager : MonoBehaviour
         gameData ??= new GameData();
         this.fileDataHandler = new FileDataHandler(Application.persistentDataPath, FileName);
         this.dataSavingObjects = FindAllDataSavers();
+
+        LoadGame();
     }
 
     private List<ISavable> FindAllDataSavers()

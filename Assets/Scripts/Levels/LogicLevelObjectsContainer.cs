@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class LogicLevelObjectsContainer : MonoBehaviour, ISavable
@@ -9,6 +8,11 @@ public class LogicLevelObjectsContainer : MonoBehaviour, ISavable
     private List<LevelObject> LogicProgressLevelobjects = new List<LevelObject>();
 
     [SerializeField] private List<LevelObject> logicLevelObjects = new List<LevelObject>();
+
+    [SerializeField] List<LevelCompletionLinker> logicLevelCompletionLinker = new List<LevelCompletionLinker>();
+
+    Dictionary<bool, LevelObject> levelCompletionLDictionary = new Dictionary<bool, LevelObject>();
+
 
     //public void ActivateLevels()
     //{
@@ -32,7 +36,7 @@ public class LogicLevelObjectsContainer : MonoBehaviour, ISavable
         {
             if (!LogicProgressLevelobjects.Contains(logicLevelObjects[i]))
             {
-                LevelObject.OnLevelDone.Invoke(LogicProgressLevelobjects);
+                LevelObject.OnLevelDone.Invoke(LogicProgressLevelobjects, logicLevelCompletionLinker);
                 break;
             }
         }
@@ -42,12 +46,22 @@ public class LogicLevelObjectsContainer : MonoBehaviour, ISavable
 
     public void SaveData(ref GameData gameData)
     {
-       gameData.logicLevelObjects = new List<LevelObject>(LogicProgressLevelobjects);
+        gameData.logicLevelObjects = new List<LevelObject>(LogicProgressLevelobjects);
+        gameData.logicLevelCompletionLinker = new List<LevelCompletionLinker>(logicLevelCompletionLinker);
     }
 
     public void LoadData(GameData gameData)
     {
         LogicProgressLevelobjects = new List<LevelObject>(gameData.logicLevelObjects);
+        logicLevelCompletionLinker = new List<LevelCompletionLinker>(gameData.logicLevelCompletionLinker);
+
+        foreach (LevelCompletionLinker Linker in logicLevelCompletionLinker)
+        {
+            if (Linker.levelObject != null)
+            {
+                Linker.levelObject.SetCompletionStatus(Linker.IsLevelDone);
+            }
+        }
     }
 
     //public void RegisterPrecenet()

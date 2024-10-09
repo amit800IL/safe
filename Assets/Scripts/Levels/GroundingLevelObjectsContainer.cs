@@ -10,6 +10,9 @@ public class GroundingLevelObjectsContainer : MonoBehaviour, ISavable
     private List<LevelObject> groundProgressLevelObjects = new List<LevelObject>();
 
     [SerializeField] private List<LevelObject> groundingLevelObjects = new List<LevelObject>();
+
+    [SerializeField] List<LevelCompletionLinker> groundingLevelsCompletionLinker = new List<LevelCompletionLinker>();
+
     //public void ActivateLevels()
     //{
     //    DataSavingManager.Instance.LoadGame();
@@ -27,12 +30,11 @@ public class GroundingLevelObjectsContainer : MonoBehaviour, ISavable
 
     public void RegisterLevelEnd()
     {
-
-        for (int i = 0; i <= groundingLevelObjects.Count; i++)
+        for (int i = 0; i < groundingLevelObjects.Count; i++)
         {
             if (!groundProgressLevelObjects.Contains(groundingLevelObjects[i]))
             {
-                LevelObject.OnLevelDone.Invoke(groundProgressLevelObjects);
+                LevelObject.OnLevelDone?.Invoke(groundProgressLevelObjects, groundingLevelsCompletionLinker);
                 break;
             }
         }
@@ -43,11 +45,21 @@ public class GroundingLevelObjectsContainer : MonoBehaviour, ISavable
     public void SaveData(ref GameData gameData)
     {
         gameData.groundinLevelObjects = new List<LevelObject>(groundProgressLevelObjects);
+        gameData.groundingLevelCompletionLinker = new List<LevelCompletionLinker>(groundingLevelsCompletionLinker);
     }
 
     public void LoadData(GameData gameData)
     {
         groundProgressLevelObjects = new List<LevelObject>(gameData.groundinLevelObjects);
+        groundingLevelsCompletionLinker = new List<LevelCompletionLinker>(gameData.groundingLevelCompletionLinker);
+
+        foreach (LevelCompletionLinker Linker in groundingLevelsCompletionLinker)
+        {
+            if (Linker.levelObject != null)
+            {
+                Linker.levelObject.SetCompletionStatus(Linker.IsLevelDone);
+            }
+        }
     }
 
 }
