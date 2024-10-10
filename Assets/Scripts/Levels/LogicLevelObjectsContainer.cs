@@ -52,6 +52,8 @@ public class LogicLevelObjectsContainer : MonoBehaviour, ISavable
 
     public void LoadData(GameData gameData)
     {
+        if (gameData == null) return;
+
         LogicProgressLevelobjects = new List<LevelObject>(gameData.logicLevelObjects);
         logicLevelCompletionLinker = new List<LevelCompletionLinker>(gameData.logicLevelCompletionLinker);
 

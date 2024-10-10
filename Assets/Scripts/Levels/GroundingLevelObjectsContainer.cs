@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 
@@ -50,7 +49,10 @@ public class GroundingLevelObjectsContainer : MonoBehaviour, ISavable
 
     public void LoadData(GameData gameData)
     {
+        if (gameData == null) return;
+
         groundProgressLevelObjects = new List<LevelObject>(gameData.groundinLevelObjects);
+
         groundingLevelsCompletionLinker = new List<LevelCompletionLinker>(gameData.groundingLevelCompletionLinker);
 
         foreach (LevelCompletionLinker Linker in groundingLevelsCompletionLinker)
