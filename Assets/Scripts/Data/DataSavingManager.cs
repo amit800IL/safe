@@ -17,8 +17,6 @@ public class DataSavingManager : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(this);
-
         if (Instance == null)
         {
             Instance = this;
@@ -28,7 +26,10 @@ public class DataSavingManager : MonoBehaviour
             Destroy(Instance);
         }
 
+        DontDestroyOnLoad(this.gameObject);
+
         gameData ??= new GameData();
+
         this.fileDataHandler = new FileDataHandler(Application.persistentDataPath, FileName);
     }
 
@@ -56,7 +57,7 @@ public class DataSavingManager : MonoBehaviour
 
     private List<ISavable> FindAllDataSavers()
     {
-        IEnumerable<ISavable> dataSavers = Resources.FindObjectsOfTypeAll<MonoBehaviour>().OfType<ISavable>();
+        IEnumerable<ISavable> dataSavers = FindObjectsOfType<MonoBehaviour>().OfType<ISavable>();
 
         return new List<ISavable>(dataSavers);
     }
