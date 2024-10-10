@@ -11,8 +11,6 @@ public class LogicLevelObjectsContainer : MonoBehaviour, ISavable
 
     [SerializeField] List<LevelCompletionLinker> logicLevelCompletionLinker = new List<LevelCompletionLinker>();
 
-    Dictionary<bool, LevelObject> levelCompletionLDictionary = new Dictionary<bool, LevelObject>();
-
 
     //public void ActivateLevels()
     //{

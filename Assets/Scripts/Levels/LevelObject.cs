@@ -10,6 +10,7 @@ public class LevelObject : MonoBehaviour
     public bool IsLevelDone => isLevelDone;
     [field: SerializeField] public LevelCompletionLinker LevelCompletionLinker { get; private set; }
 
+
     private void Start()
     {
         OnLevelDone += OnLevelEnded;

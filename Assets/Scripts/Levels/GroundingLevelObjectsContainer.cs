@@ -26,7 +26,10 @@ public class GroundingLevelObjectsContainer : MonoBehaviour, ISavable
 
     //    groundProgressLevelObjects.Last().gameObject.SetActive(true);
     //}
-
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
     public void RegisterLevelEnd()
     {
         for (int i = 0; i < groundingLevelObjects.Count; i++)

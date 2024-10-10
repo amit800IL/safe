@@ -1,11 +1,10 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class LevelButtonSection : MonoBehaviour
 {
     [SerializeField] private GameObject buttonsSection;
-    [SerializeField] private Button backButton;
+    [SerializeField] private GameObject[] objectToChangeActiveState;
     [SerializeField] private GameObject LevelSection;
     [SerializeField] private GameObject levelStartScreen;
     [SerializeField] private LevelObject[] levelObjects;
@@ -13,7 +12,7 @@ public class LevelButtonSection : MonoBehaviour
 
     private void Start()
     {
-        DataSavingManager.Instance.LoadGame();
+        //DataSavingManager.Instance.LoadGame();
 
         for (int i = 0; i < levelObjects.Length; i++)
         {
@@ -30,7 +29,11 @@ public class LevelButtonSection : MonoBehaviour
 
     public void OpenSectionStart()
     {
-        backButton.gameObject.SetActive(true);
+        foreach (GameObject obj in objectToChangeActiveState)
+        {
+            obj.gameObject.SetActive(true);
+        }
+
 
         LevelSection.SetActive(true);
 
@@ -50,7 +53,10 @@ public class LevelButtonSection : MonoBehaviour
             level.gameObject.SetActive(false);
         }
 
-        backButton.gameObject.SetActive(true);
+        foreach (GameObject obj in objectToChangeActiveState)
+        {
+            obj.gameObject.SetActive(true);
+        }
 
         levelObject.gameObject.SetActive(true);
 

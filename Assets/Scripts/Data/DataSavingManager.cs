@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DataSavingManager : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class DataSavingManager : MonoBehaviour
 
     [SerializeField] private GameData gameData;
 
-    private const string FileName = "DataFile";
+    private const string FileName = "DataFile.json";
 
     private List<ISavable> dataSavingObjects;
 
@@ -16,6 +17,8 @@ public class DataSavingManager : MonoBehaviour
 
     private void Awake()
     {
+        DontDestroyOnLoad(this);
+
         if (Instance == null)
         {
             Instance = this;
@@ -27,9 +30,28 @@ public class DataSavingManager : MonoBehaviour
 
         gameData ??= new GameData();
         this.fileDataHandler = new FileDataHandler(Application.persistentDataPath, FileName);
-        this.dataSavingObjects = FindAllDataSavers();
+    }
 
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.sceneUnloaded += OnSceneUnloaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        SceneManager.sceneUnloaded -= OnSceneUnloaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        this.dataSavingObjects = FindAllDataSavers();
         LoadGame();
+    }
+    private void OnSceneUnloaded(Scene scene)
+    {
+        SaveGame();
     }
 
     private List<ISavable> FindAllDataSavers()
