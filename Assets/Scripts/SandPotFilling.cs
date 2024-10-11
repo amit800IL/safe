@@ -2,10 +2,15 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SandPotFilling : MonoBehaviour
+public class SandPotFilling : MonoBehaviour, ISavable
 {
     [SerializeField] private Image sandImage;
     [SerializeField] private float sandFillAmount;
+
+    private void Start()
+    {
+        DataSavingManager.Instance.RegisterSavable(this);
+    }
 
     public IEnumerator FillPot()
     {
@@ -28,5 +33,15 @@ public class SandPotFilling : MonoBehaviour
         sandFillAmount = sandImage.fillAmount;
 
         yield return null;
+    }
+
+    public void LoadData(GameData gameData)
+    {
+        if (gameData == null) return;
+    }
+
+    public void SaveData(ref GameData gameData)
+    {
+        if (gameData == null) return;
     }
 }

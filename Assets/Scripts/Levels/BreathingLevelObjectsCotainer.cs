@@ -12,6 +12,11 @@ public class BreathingLevelObjectsCotainer : MonoBehaviour, ISavable
 
     [SerializeField] List<LevelCompletionLinker> breathinglevelCompletionLinkers = new List<LevelCompletionLinker>();
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+        DataSavingManager.Instance.RegisterSavable(this);
+    }
     public void RegisterLevelEnd()
     {
         for (int i = 0; i <= BreathingLevelObjects.Count; i++)

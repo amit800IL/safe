@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -31,6 +30,8 @@ public class DataSavingManager : MonoBehaviour
         gameData ??= new GameData();
 
         this.fileDataHandler = new FileDataHandler(Application.persistentDataPath, FileName);
+
+        this.dataSavingObjects = new List<ISavable>();
     }
 
     private void OnEnable()
@@ -47,7 +48,6 @@ public class DataSavingManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        this.dataSavingObjects = FindAllDataSavers();
         LoadGame();
     }
     private void OnSceneUnloaded(Scene scene)
@@ -55,12 +55,6 @@ public class DataSavingManager : MonoBehaviour
         SaveGame();
     }
 
-    private List<ISavable> FindAllDataSavers()
-    {
-        IEnumerable<ISavable> dataSavers = FindObjectsOfType<MonoBehaviour>().OfType<ISavable>();
-
-        return new List<ISavable>(dataSavers);
-    }
     public void SaveGame()
     {
         foreach (ISavable saverObject in dataSavingObjects)
@@ -84,6 +78,14 @@ public class DataSavingManager : MonoBehaviour
             {
                 saverObject.LoadData(this.gameData);
             }
+        }
+    }
+
+    public void RegisterSavable(ISavable savable)
+    {
+        if (!dataSavingObjects.Contains(savable))
+        {
+            dataSavingObjects.Add(savable);
         }
     }
 }

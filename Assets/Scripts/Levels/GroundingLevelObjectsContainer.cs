@@ -29,6 +29,7 @@ public class GroundingLevelObjectsContainer : MonoBehaviour, ISavable
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
+        DataSavingManager.Instance.RegisterSavable(this);
     }
     public void RegisterLevelEnd()
     {

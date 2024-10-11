@@ -10,7 +10,11 @@ public class LogicLevelObjectsContainer : MonoBehaviour, ISavable
     [SerializeField] private List<LevelObject> logicLevelObjects = new List<LevelObject>();
 
     [SerializeField] List<LevelCompletionLinker> logicLevelCompletionLinker = new List<LevelCompletionLinker>();
-
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+        DataSavingManager.Instance.RegisterSavable(this);
+    }
 
     //public void ActivateLevels()
     //{
