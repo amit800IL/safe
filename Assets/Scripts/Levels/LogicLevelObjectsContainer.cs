@@ -7,7 +7,7 @@ public class LogicLevelObjectsContainer : MonoBehaviour, ISavable
 
     [SerializeField] private List<LevelObject> logicLevelObjects = new List<LevelObject>();
 
-    [SerializeField] List<LevelCompletionLinker> logicLevelCompletionLinker = new List<LevelCompletionLinker>();
+    [SerializeField] private List<LevelCompletionLinker> logicLevelCompletionLinker = new List<LevelCompletionLinker>();
     private void Awake()
     {
         DataSavingManager.Instance.RegisterSavable(this);

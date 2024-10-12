@@ -8,7 +8,7 @@ public class GroundingLevelObjectsContainer : MonoBehaviour, ISavable
 
     [SerializeField] private List<LevelObject> groundingLevelObjects = new List<LevelObject>();
 
-    [SerializeField] List<LevelCompletionLinker> groundingLevelsCompletionLinker = new List<LevelCompletionLinker>();
+    [SerializeField] private List<LevelCompletionLinker> groundingLevelsCompletionLinker = new List<LevelCompletionLinker>();
 
     //public void ActivateLevels()
     //{

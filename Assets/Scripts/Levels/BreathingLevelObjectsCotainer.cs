@@ -7,7 +7,7 @@ public class BreathingLevelObjectsCotainer : MonoBehaviour, ISavable
 
     [SerializeField] private List<LevelObject> BreathingLevelObjects = new List<LevelObject>();
 
-    [SerializeField] List<LevelCompletionLinker> breathinglevelCompletionLinkers = new List<LevelCompletionLinker>();
+    [SerializeField] private List<LevelCompletionLinker> breathinglevelCompletionLinkers = new List<LevelCompletionLinker>();
 
     private void Awake()
     {

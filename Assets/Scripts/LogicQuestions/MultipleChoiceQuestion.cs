@@ -13,7 +13,7 @@ public class MultipleChoiceQuestion : MonoBehaviour
     [SerializeField] private Button[] multipleChoiceButton;
 
     private string buttonText;
-    List<Button> OddNumberButtons = new List<Button>();
+    private List<Button> OddNumberButtons = new List<Button>();
 
 
     private void Start()
