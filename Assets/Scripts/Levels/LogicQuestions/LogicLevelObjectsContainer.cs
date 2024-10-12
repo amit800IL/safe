@@ -10,14 +10,14 @@ public class LogicLevelObjectsContainer : MonoBehaviour, ISavable
     [SerializeField] private List<LevelCompletionLinker> logicLevelCompletionLinker = new List<LevelCompletionLinker>();
     private void Awake()
     {
-        DataSavingManager.Instance.RegisterSavable(this);
+        DataSavingManager.Instance?.RegisterSavable(this);
     }
 
     public void RegisterLevelEnd()
     {
         LevelObject.OnLevelDone?.Invoke(logicLevelCompletionLinker);
 
-        DataSavingManager.Instance.SaveGame();
+        DataSavingManager.Instance?.SaveGame();
     }
 
     public void SaveData(ref GameData gameData)

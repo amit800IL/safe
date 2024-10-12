@@ -39,7 +39,7 @@ public class LevelButtonSection : MonoBehaviour
 
         MainMenuCanvas.gameObject.SetActive(false);
 
-        DataSavingManager.Instance.LoadGame();
+        DataSavingManager.Instance?.LoadGame();
 
     }
 
@@ -62,7 +62,7 @@ public class LevelButtonSection : MonoBehaviour
 
         MainMenuCanvas.gameObject.SetActive(false);
 
-        DataSavingManager.Instance.LoadGame();
+        DataSavingManager.Instance?.LoadGame();
 
     }
 }

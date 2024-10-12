@@ -9,7 +9,7 @@ public class SandPotFilling : MonoBehaviour, ISavable
 
     private void Start()
     {
-        DataSavingManager.Instance.RegisterSavable(this);
+        DataSavingManager.Instance?.RegisterSavable(this);
     }
 
     public IEnumerator FillPot()

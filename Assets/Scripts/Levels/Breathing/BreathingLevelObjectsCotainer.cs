@@ -11,14 +11,14 @@ public class BreathingLevelObjectsCotainer : MonoBehaviour, ISavable
 
     private void Awake()
     {
-        DataSavingManager.Instance.RegisterSavable(this);
+        DataSavingManager.Instance?.RegisterSavable(this);
     }
 
     public void RegisterLevelEnd()
     {
         LevelObject.OnLevelDone.Invoke(breathinglevelCompletionLinkers);
 
-        DataSavingManager.Instance.SaveGame();
+        DataSavingManager.Instance?.SaveGame();
     }
     public void SaveData(ref GameData gameData)
     {

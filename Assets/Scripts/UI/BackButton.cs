@@ -16,7 +16,7 @@ public class BackButton : MonoBehaviour
     {
         AsyncOperation asyncSceneLoad = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
 
-        DataSavingManager.Instance.LoadGame();
+        DataSavingManager.Instance?.LoadGame();
 
         while (!asyncSceneLoad.isDone)
         {
