@@ -8,7 +8,7 @@ public class DataSavingManager : MonoBehaviour
 
     [SerializeField] private GameData gameData;
 
-    private string FileName = "DataFile.json";
+    private const string FileName = "DataFile.json";
 
     private List<ISavable> dataSavingObjects;
 
@@ -24,8 +24,6 @@ public class DataSavingManager : MonoBehaviour
         {
             Destroy(Instance);
         }
-
-        DontDestroyOnLoad(this.gameObject);
 
         gameData ??= new GameData();
 

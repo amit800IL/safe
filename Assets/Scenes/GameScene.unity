@@ -789,7 +789,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f64ec27b139d724fa940b8e071452de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonsSection: {fileID: 2092257776}
+  MainMenuCanvas: {fileID: 2092257779}
   objectToChangeActiveState:
   - {fileID: 1278383489}
   - {fileID: 2135294470}
@@ -2987,7 +2987,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f64ec27b139d724fa940b8e071452de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonsSection: {fileID: 2092257776}
+  MainMenuCanvas: {fileID: 2092257779}
   objectToChangeActiveState:
   - {fileID: 1278383489}
   - {fileID: 2135294470}
@@ -4364,20 +4364,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa3e07a7f93c9ff4b9a24328bfc87478, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelObjects:
-  - {fileID: 1382262071}
-  - {fileID: 1361347329}
-  - {fileID: 2101647565}
-  - {fileID: 3146146414542221610}
-  - {fileID: 6331010855452025273}
-  - {fileID: 6331010855383739784}
-  menuButtons:
-  - {fileID: 2096720346}
-  - {fileID: 282231806}
-  - {fileID: 1783864347}
-  - {fileID: 402428800}
-  - {fileID: 428606717}
-  - {fileID: 90744092}
 --- !u!1 &1320765848
 GameObject:
   m_ObjectHideFlags: 0
@@ -7036,7 +7022,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f64ec27b139d724fa940b8e071452de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonsSection: {fileID: 2092257776}
+  MainMenuCanvas: {fileID: 2092257779}
   objectToChangeActiveState:
   - {fileID: 1278383489}
   LevelSection: {fileID: 1510320469}

@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class LevelButtonSection : MonoBehaviour
 {
-    [SerializeField] private GameObject buttonsSection;
+    [SerializeField] private Canvas MainMenuCanvas;
     [SerializeField] private GameObject[] objectToChangeActiveState;
     [SerializeField] private GameObject LevelSection;
     [SerializeField] private GameObject levelStartScreen;
@@ -37,7 +37,7 @@ public class LevelButtonSection : MonoBehaviour
 
         levelStartScreen.SetActive(true);
 
-        buttonsSection.SetActive(false);
+        MainMenuCanvas.gameObject.SetActive(false);
 
         DataSavingManager.Instance.LoadGame();
 
@@ -60,7 +60,7 @@ public class LevelButtonSection : MonoBehaviour
 
         LevelSection.SetActive(true);
 
-        buttonsSection.SetActive(false);
+        MainMenuCanvas.gameObject.SetActive(false);
 
         DataSavingManager.Instance.LoadGame();
 
