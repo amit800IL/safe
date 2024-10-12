@@ -10,20 +10,6 @@ public class GroundingLevelObjectsContainer : MonoBehaviour, ISavable
 
     [SerializeField] private List<LevelCompletionLinker> groundingLevelsCompletionLinker = new List<LevelCompletionLinker>();
 
-    //public void ActivateLevels()
-    //{
-    //    DataSavingManager.Instance.LoadGame();
-
-    //    foreach (LevelObject levelObj in groundProgressLevelObjects)
-    //    {
-    //        if (levelObj != null)
-    //        {
-    //            levelObj.gameObject.SetActive(false);
-    //        }
-    //    }
-
-    //    groundProgressLevelObjects.Last().gameObject.SetActive(true);
-    //}
     private void Awake()
     {
         DataSavingManager.Instance.RegisterSavable(this);

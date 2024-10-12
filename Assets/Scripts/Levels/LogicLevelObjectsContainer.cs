@@ -13,20 +13,6 @@ public class LogicLevelObjectsContainer : MonoBehaviour, ISavable
         DataSavingManager.Instance.RegisterSavable(this);
     }
 
-    //public void ActivateLevels()
-    //{
-    //    DataSavingManager.Instance.LoadGame();
-
-    //    foreach (LevelObject levelObj in LogicProgressLevelobjects)
-    //    {
-    //        if (levelObj != null)
-    //        {
-    //            levelObj.gameObject.SetActive(false);
-    //        }
-    //    }
-
-    //    LogicProgressLevelobjects.Last().gameObject.SetActive(true);
-    //}
     public void RegisterLevelEnd()
     {
         LevelObject.OnLevelDone?.Invoke(logicLevelCompletionLinker);
