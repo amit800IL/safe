@@ -28,11 +28,11 @@ public class GroundingWordsLevel : MonoBehaviour
 
     private IEnumerator FillPot(Button button)
     {
-        foreach (Button groundingButton in buttonsList)
+        foreach (Button buttonObject in buttonsList)
         {
-            if (groundingButton != button)
+            if (buttonObject != button)
             {
-                groundingButton.interactable = false;
+                buttonObject.interactable = false;
             }
         }
 
@@ -49,13 +49,16 @@ public class GroundingWordsLevel : MonoBehaviour
         float maxTime = 2.5f;
         float currentTime = 0f;
 
+        Vector3 buttonPosition = button.transform.position;
+        Vector3 wordsTargetPosition = wordTargetLocation.position;
+
         while (currentTime < maxTime)
         {
             currentTime += Time.deltaTime;
 
             float progress = currentTime / maxTime;
 
-            button.transform.position = Vector3.Lerp(button.transform.position, wordTargetLocation.position, progress);
+            button.transform.position = Vector3.Lerp(buttonPosition, wordsTargetPosition, progress);
 
             yield return null;
         }

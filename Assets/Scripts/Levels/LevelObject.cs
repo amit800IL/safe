@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class LevelObject : MonoBehaviour
 {
+
+
     public static Action<List<LevelObject>, List<LevelCompletionLinker>> OnLevelDone { get; set; }
 
     [SerializeField][HideInInspector] private bool isLevelDone = false;
