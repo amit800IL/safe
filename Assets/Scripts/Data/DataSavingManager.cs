@@ -32,7 +32,6 @@ public class DataSavingManager : MonoBehaviour
         this.dataSavingObjects = new List<ISavable>();
     }
 
-
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -48,6 +47,7 @@ public class DataSavingManager : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         LoadGame();
+        SaveGame();
     }
     private void OnSceneUnloaded(Scene scene)
     {

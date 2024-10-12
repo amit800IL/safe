@@ -39,7 +39,7 @@ public class FileDataHandler
         {
             string dataToLoad = "";
 
-            using (FileStream stream = new FileStream(fullPath, FileMode.OpenOrCreate))
+            using (FileStream stream = new FileStream(fullPath, FileMode.Open))
             {
                 using (StreamReader reader = new StreamReader(stream))
                 {

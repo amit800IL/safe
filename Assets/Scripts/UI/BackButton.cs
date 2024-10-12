@@ -1,11 +1,26 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class BackButton : MonoBehaviour
 {
     public void BackToMenu()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        if (gameObject.activeSelf)
+        {
+            StartCoroutine(BackToMenuCoroutine());
+        }
+    }
+
+    private IEnumerator BackToMenuCoroutine()
+    {
+        AsyncOperation asyncSceneLoad = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+
+        DataSavingManager.Instance.LoadGame();
+
+        while (!asyncSceneLoad.isDone)
+        {
+            yield return null;
+        }
     }
 }
