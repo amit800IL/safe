@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class LevelObject : MonoBehaviour
 {
+
     public static Action<List<LevelCompletionLinker>> OnLevelDone { get; set; }
-    [field: SerializeField] public LevelCompletionLinker LevelCompletionLinker { get; private set; }
+    [field: SerializeField] public LevelCompletionLinker LevelCompletionLinker { get; set; }
 
     [SerializeField] private LevelObjectSO levelObjectSO;
+
 
     private void Start()
     {
@@ -43,16 +45,6 @@ public class LevelCompletionLinker
     public LevelCompletionLinker(bool IsLevelDone, LevelObjectSO levelObject)
     {
         this.IsLevelDone = IsLevelDone;
-        this.levelObject = levelObject;
-    }
-
-    public void SetCompletionStatus(bool isDone)
-    {
-        IsLevelDone = isDone;
-    }
-
-    public void SetScriptableObject(LevelObjectSO levelObject)
-    {
         this.levelObject = levelObject;
     }
 }

@@ -10,7 +10,6 @@ public class LogicLevelObjectsContainer : MonoBehaviour, ISavable
     [SerializeField] List<LevelCompletionLinker> logicLevelCompletionLinker = new List<LevelCompletionLinker>();
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
         DataSavingManager.Instance.RegisterSavable(this);
     }
 
@@ -28,16 +27,17 @@ public class LogicLevelObjectsContainer : MonoBehaviour, ISavable
 
     //    LogicProgressLevelobjects.Last().gameObject.SetActive(true);
     //}
-
     public void RegisterLevelEnd()
     {
-        LevelObject.OnLevelDone.Invoke(logicLevelCompletionLinker);
+        LevelObject.OnLevelDone?.Invoke(logicLevelCompletionLinker);
 
         DataSavingManager.Instance.SaveGame();
     }
 
     public void SaveData(ref GameData gameData)
     {
+        if (gameData == null) return;
+
         gameData.logicLevelCompletionLinker = new List<LevelCompletionLinker>(logicLevelCompletionLinker);
     }
 
@@ -47,11 +47,11 @@ public class LogicLevelObjectsContainer : MonoBehaviour, ISavable
 
         logicLevelCompletionLinker = new List<LevelCompletionLinker>(gameData.logicLevelCompletionLinker);
 
-        foreach (LevelCompletionLinker Linker in logicLevelCompletionLinker)
+        for (int i = 0; i < logicLevelCompletionLinker.Count; i++)
         {
-            if (Linker.levelObject != null)
+            if (logicLevelCompletionLinker[i] != null)
             {
-                Linker.SetCompletionStatus(Linker.IsLevelDone);
+                logicLevelObjects[i].LevelCompletionLinker = logicLevelCompletionLinker[i];
             }
         }
     }

@@ -12,8 +12,6 @@ public class LevelButtonSection : MonoBehaviour
 
     private void Start()
     {
-        //DataSavingManager.Instance.LoadGame();
-
         for (int i = 0; i < levelObjects.Length; i++)
         {
             if (levelObjects[i].IsLevelOpen() && levelObjects[i] != null)

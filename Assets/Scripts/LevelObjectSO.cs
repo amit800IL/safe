@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -7,5 +5,5 @@ using UnityEngine;
 public class LevelObjectSO : ScriptableObject
 {
     public int LevelHashCode;
-    public bool IsLevelDone = true;
+    [HideInInspector] public bool IsLevelDone = true;
 }

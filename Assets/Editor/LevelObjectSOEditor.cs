@@ -1,18 +1,18 @@
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(LevelObject))]
-public class LevelObjectEditor : Editor
+[CustomEditor(typeof(LevelObjectSO))]
+public class LevelObjectSOEditor : Editor
 {
     public override void OnInspectorGUI()
     {
         base.OnInspectorGUI();
 
-        LevelObject levelObject = (LevelObject)target;
+        LevelObjectSO levelObject = (LevelObjectSO)target;
 
         GUI.enabled = false;
 
-        SerializedProperty isLevelDoneProperty = serializedObject.FindProperty("isLevelDone");
+        SerializedProperty isLevelDoneProperty = serializedObject.FindProperty("IsLevelDone");
 
         if (isLevelDoneProperty != null)
         {

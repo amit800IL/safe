@@ -28,6 +28,7 @@ public class GroundingLevelObjectsContainer : MonoBehaviour, ISavable
     {
         DataSavingManager.Instance.RegisterSavable(this);
     }
+
     public void RegisterLevelEnd()
     {
         LevelObject.OnLevelDone?.Invoke(groundingLevelsCompletionLinker);
@@ -37,6 +38,8 @@ public class GroundingLevelObjectsContainer : MonoBehaviour, ISavable
 
     public void SaveData(ref GameData gameData)
     {
+        if (gameData == null) return;
+
         gameData.groundingLevelCompletionLinker = new List<LevelCompletionLinker>(groundingLevelsCompletionLinker);
     }
 
@@ -46,11 +49,11 @@ public class GroundingLevelObjectsContainer : MonoBehaviour, ISavable
 
         groundingLevelsCompletionLinker = new List<LevelCompletionLinker>(gameData.groundingLevelCompletionLinker);
 
-        foreach (LevelCompletionLinker Linker in groundingLevelsCompletionLinker)
+        for (int i = 0; i < groundingLevelsCompletionLinker.Count; i++)
         {
-            if (Linker.levelObject != null)
+            if (groundingLevelsCompletionLinker[i] != null)
             {
-                Linker.SetCompletionStatus(Linker.IsLevelDone);
+                groundingLevelObjects[i].LevelCompletionLinker = groundingLevelsCompletionLinker[i];
             }
         }
     }

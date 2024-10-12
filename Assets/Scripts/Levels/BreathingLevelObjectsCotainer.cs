@@ -13,6 +13,7 @@ public class BreathingLevelObjectsCotainer : MonoBehaviour, ISavable
     {
         DataSavingManager.Instance.RegisterSavable(this);
     }
+
     public void RegisterLevelEnd()
     {
         LevelObject.OnLevelDone.Invoke(breathinglevelCompletionLinkers);
@@ -27,14 +28,7 @@ public class BreathingLevelObjectsCotainer : MonoBehaviour, ISavable
     public void LoadData(GameData gameData)
     {
         breathinglevelCompletionLinkers = new List<LevelCompletionLinker>(gameData.logicLevelCompletionLinker);
-
-        foreach (LevelCompletionLinker Linker in breathinglevelCompletionLinkers)
-        {
-            if (Linker.levelObject != null)
-            {
-                Linker.SetCompletionStatus(Linker.IsLevelDone);
-            }
-        }
     }
-
 }
+
+
