@@ -25,6 +25,8 @@ public class DataSavingManager : MonoBehaviour
             Destroy(Instance);
         }
 
+        DontDestroyOnLoad(this.gameObject);
+
         gameData ??= new GameData();
 
         this.fileDataHandler = new FileDataHandler(Application.persistentDataPath, FileName);
