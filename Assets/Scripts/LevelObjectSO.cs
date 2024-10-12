@@ -7,4 +7,5 @@ using UnityEngine;
 public class LevelObjectSO : ScriptableObject
 {
     public int LevelHashCode;
+    public bool IsLevelDone = true;
 }

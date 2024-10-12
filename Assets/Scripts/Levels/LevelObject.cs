@@ -4,14 +4,10 @@ using UnityEngine;
 
 public class LevelObject : MonoBehaviour
 {
-
-
-    public static Action<List<LevelObject>, List<LevelCompletionLinker>> OnLevelDone { get; set; }
-
-    [SerializeField][HideInInspector] private bool isLevelDone = false;
-    public bool IsLevelDone => isLevelDone;
+    public static Action<List<LevelCompletionLinker>> OnLevelDone { get; set; }
     [field: SerializeField] public LevelCompletionLinker LevelCompletionLinker { get; private set; }
 
+    [SerializeField] private LevelObjectSO levelObjectSO;
 
     private void Start()
     {
@@ -20,25 +16,16 @@ public class LevelObject : MonoBehaviour
 
     public bool IsLevelOpen()
     {
-        return isLevelDone;
+        return LevelCompletionLinker.IsLevelDone;
     }
 
-    public void SetCompletionStatus(bool isDone)
+    private void OnLevelEnded(List<LevelCompletionLinker> completionLinkers)
     {
-        isLevelDone = isDone;
-    }
-
-
-    private void OnLevelEnded(List<LevelObject> levelObjects, List<LevelCompletionLinker> completionLinkers)
-    {
-        if (!levelObjects.Contains(this))
-            levelObjects.Add(this);
-
-        if (!completionLinkers.Contains(LevelCompletionLinker) && !IsLevelDone)
+        if (!completionLinkers.Contains(LevelCompletionLinker) && !LevelCompletionLinker.IsLevelDone)
         {
-            isLevelDone = true;
+           LevelCompletionLinker.IsLevelDone = levelObjectSO.IsLevelDone;
 
-            LevelCompletionLinker = new LevelCompletionLinker(IsLevelDone, this);
+            LevelCompletionLinker = new LevelCompletionLinker(LevelCompletionLinker.IsLevelDone, levelObjectSO);
 
             completionLinkers.Add(LevelCompletionLinker);
         }
@@ -51,11 +38,21 @@ public class LevelObject : MonoBehaviour
 public class LevelCompletionLinker
 {
     public bool IsLevelDone = false;
-    public LevelObject levelObject;
+    public LevelObjectSO levelObject;
 
-    public LevelCompletionLinker(bool IsLevelDone, LevelObject levelObject)
+    public LevelCompletionLinker(bool IsLevelDone, LevelObjectSO levelObject)
     {
         this.IsLevelDone = IsLevelDone;
+        this.levelObject = levelObject;
+    }
+
+    public void SetCompletionStatus(bool isDone)
+    {
+        IsLevelDone = isDone;
+    }
+
+    public void SetScriptableObject(LevelObjectSO levelObject)
+    {
         this.levelObject = levelObject;
     }
 }

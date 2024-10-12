@@ -6,8 +6,6 @@ public class GroundingLevelObjectsContainer : MonoBehaviour, ISavable
 {
     private int LevelCollectivePrecent;
 
-    private List<LevelObject> groundProgressLevelObjects = new List<LevelObject>();
-
     [SerializeField] private List<LevelObject> groundingLevelObjects = new List<LevelObject>();
 
     [SerializeField] List<LevelCompletionLinker> groundingLevelsCompletionLinker = new List<LevelCompletionLinker>();
@@ -28,26 +26,17 @@ public class GroundingLevelObjectsContainer : MonoBehaviour, ISavable
     //}
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
         DataSavingManager.Instance.RegisterSavable(this);
     }
     public void RegisterLevelEnd()
     {
-        for (int i = 0; i < groundingLevelObjects.Count; i++)
-        {
-            if (!groundProgressLevelObjects.Contains(groundingLevelObjects[i]))
-            {
-                LevelObject.OnLevelDone?.Invoke(groundProgressLevelObjects, groundingLevelsCompletionLinker);
-                break;
-            }
-        }
+        LevelObject.OnLevelDone?.Invoke(groundingLevelsCompletionLinker);
 
         DataSavingManager.Instance.SaveGame();
     }
 
     public void SaveData(ref GameData gameData)
     {
-        gameData.groundinLevelObjects = new List<LevelObject>(groundProgressLevelObjects);
         gameData.groundingLevelCompletionLinker = new List<LevelCompletionLinker>(groundingLevelsCompletionLinker);
     }
 
@@ -55,15 +44,13 @@ public class GroundingLevelObjectsContainer : MonoBehaviour, ISavable
     {
         if (gameData == null) return;
 
-        groundProgressLevelObjects = new List<LevelObject>(gameData.groundinLevelObjects);
-
         groundingLevelsCompletionLinker = new List<LevelCompletionLinker>(gameData.groundingLevelCompletionLinker);
 
         foreach (LevelCompletionLinker Linker in groundingLevelsCompletionLinker)
         {
             if (Linker.levelObject != null)
             {
-                Linker.levelObject.SetCompletionStatus(Linker.IsLevelDone);
+                Linker.SetCompletionStatus(Linker.IsLevelDone);
             }
         }
     }

@@ -383,10 +383,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 870eba42ea178574a88b0cef78fd13a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isLevelDone: 0
   <LevelCompletionLinker>k__BackingField:
     IsLevelDone: 0
     levelObject: {fileID: 0}
+  levelObjectSO: {fileID: 0}
 --- !u!1001 &5045988222294659279
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -569,6 +569,10 @@ PrefabInstance:
       propertyPath: logicQuestionSO
       value: 
       objectReference: {fileID: 11400000, guid: 9beeedb0c8c07ed488586daf68d38dd8, type: 2}
+    - target: {fileID: 6331010854587202333, guid: 1875729b5435b2d429c6e18c468a3f19, type: 3}
+      propertyPath: levelObjectSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 898c410e67391a74a868220b1cdbe10f, type: 2}
     - target: {fileID: 7997764261171088635, guid: 1875729b5435b2d429c6e18c468a3f19, type: 3}
       propertyPath: m_text
       value: "\u05D4\u05DE\u05E9\u05DA"
@@ -2613,6 +2617,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1164349388}
     m_Modifications:
+    - target: {fileID: 4749305494117980320, guid: 6cf0bf0f260ae19428dac80ee425d0e0, type: 3}
+      propertyPath: levelObjectSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 085c962b196971e4589ee70ced54ebd4, type: 2}
     - target: {fileID: 5516025354394225816, guid: 6cf0bf0f260ae19428dac80ee425d0e0, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -5089,6 +5097,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1164349388}
     m_Modifications:
+    - target: {fileID: 4749305494117980320, guid: 6cf0bf0f260ae19428dac80ee425d0e0, type: 3}
+      propertyPath: levelObjectSO
+      value: 
+      objectReference: {fileID: 11400000, guid: d774d85fab67beb488c8018564540b99, type: 2}
     - target: {fileID: 5516025354394225816, guid: 6cf0bf0f260ae19428dac80ee425d0e0, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -7416,6 +7428,10 @@ PrefabInstance:
       propertyPath: logicQuestionSO
       value: 
       objectReference: {fileID: 11400000, guid: f5b8592d234f9d748817c05f1d64e94c, type: 2}
+    - target: {fileID: 6331010854587202333, guid: 1875729b5435b2d429c6e18c468a3f19, type: 3}
+      propertyPath: levelObjectSO
+      value: 
+      objectReference: {fileID: 11400000, guid: d3967545b6d16b64298843e8d8c1140f, type: 2}
     - target: {fileID: 8853077752347362233, guid: 1875729b5435b2d429c6e18c468a3f19, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -7614,6 +7630,10 @@ PrefabInstance:
       propertyPath: isLevelDone
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3146146415117174787, guid: 1a6036b0e1ca23645a9daa21da63b374, type: 3}
+      propertyPath: levelObjectSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 497d728b06417684890894697cd2c0ff, type: 2}
     - target: {fileID: 4575048724712095124, guid: 1a6036b0e1ca23645a9daa21da63b374, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -7659,6 +7679,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1164349388}
     m_Modifications:
+    - target: {fileID: 4749305494117980320, guid: 6cf0bf0f260ae19428dac80ee425d0e0, type: 3}
+      propertyPath: levelObjectSO
+      value: 
+      objectReference: {fileID: 11400000, guid: a4391fd0d4475004a857dc00dbfd210a, type: 2}
     - target: {fileID: 5516025354394225816, guid: 6cf0bf0f260ae19428dac80ee425d0e0, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
