@@ -80,7 +80,7 @@ public class DataSavingManager : MonoBehaviour
             {
                 saverObject.LoadData(this.gameData);
             }
-        }
+        } 
     }
 
     public void RegisterSavable(ISavable savable)
