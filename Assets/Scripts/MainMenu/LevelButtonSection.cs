@@ -40,9 +40,6 @@ public class LevelButtonSection : MonoBehaviour
         levelStartScreen.SetActive(true);
 
         MainMenuCanvas.gameObject.SetActive(false);
-
-        DataSavingManager.Instance.LoadGame();
-
     }
 
     public void ActivateLogicLevel(LevelObject levelObject)
@@ -63,8 +60,5 @@ public class LevelButtonSection : MonoBehaviour
         LevelSection.SetActive(true);
 
         MainMenuCanvas.gameObject.SetActive(false);
-
-        DataSavingManager.Instance.LoadGame();
-
     }
 }
