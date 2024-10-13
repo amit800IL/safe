@@ -12,6 +12,8 @@ public class LevelButtonSection : MonoBehaviour
 
     private void Start()
     {
+        DataSavingManager.Instance.LoadGame();
+
         for (int i = 0; i < levelObjects.Length; i++)
         {
             if (levelObjects[i].IsLevelOpen() && levelObjects[i] != null)
@@ -39,7 +41,7 @@ public class LevelButtonSection : MonoBehaviour
 
         MainMenuCanvas.gameObject.SetActive(false);
 
-        DataSavingManager.Instance?.LoadGame();
+        DataSavingManager.Instance.LoadGame();
 
     }
 
@@ -62,7 +64,7 @@ public class LevelButtonSection : MonoBehaviour
 
         MainMenuCanvas.gameObject.SetActive(false);
 
-        DataSavingManager.Instance?.LoadGame();
+        DataSavingManager.Instance.LoadGame();
 
     }
 }

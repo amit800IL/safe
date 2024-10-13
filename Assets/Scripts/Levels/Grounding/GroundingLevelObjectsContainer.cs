@@ -12,14 +12,14 @@ public class GroundingLevelObjectsContainer : MonoBehaviour, ISavable
 
     private void Awake()
     {
-        DataSavingManager.Instance?.RegisterSavable(this);
+        DataSavingManager.Instance.RegisterSavable(this);
     }
 
     public void RegisterLevelEnd()
     {
         LevelObject.OnLevelDone?.Invoke(groundingLevelsCompletionLinker);
 
-        DataSavingManager.Instance?.SaveGame();
+        DataSavingManager.Instance.SaveGame();
     }
 
     public void SaveData(ref GameData gameData)

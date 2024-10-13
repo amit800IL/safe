@@ -32,7 +32,7 @@ public class LevelObject : MonoBehaviour
             completionLinkers.Add(LevelCompletionLinker);
         }
 
-        DataSavingManager.Instance?.SaveGame();
+        DataSavingManager.Instance.SaveGame();
     }
 }
 

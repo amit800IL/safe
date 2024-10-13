@@ -11,23 +11,35 @@ public class BreathingLevelObjectsCotainer : MonoBehaviour, ISavable
 
     private void Awake()
     {
-        DataSavingManager.Instance?.RegisterSavable(this);
+        DataSavingManager.Instance.RegisterSavable(this);
     }
 
     public void RegisterLevelEnd()
     {
-        LevelObject.OnLevelDone.Invoke(breathinglevelCompletionLinkers);
+        LevelObject.OnLevelDone?.Invoke(breathinglevelCompletionLinkers);
 
-        DataSavingManager.Instance?.SaveGame();
+        DataSavingManager.Instance.SaveGame();
     }
     public void SaveData(ref GameData gameData)
     {
+        if (gameData == null) return;
+
         gameData.breathingLevelCompletionLinker = new List<LevelCompletionLinker>(breathinglevelCompletionLinkers);
     }
 
     public void LoadData(GameData gameData)
     {
-        breathinglevelCompletionLinkers = new List<LevelCompletionLinker>(gameData.logicLevelCompletionLinker);
+        if (gameData == null) return;
+
+        breathinglevelCompletionLinkers = new List<LevelCompletionLinker>(gameData.breathingLevelCompletionLinker);
+
+        for (int i = 0; i < breathinglevelCompletionLinkers.Count; i++)
+        {
+            if (breathinglevelCompletionLinkers[i] != null)
+            {
+                BreathingLevelObjects[i].LevelCompletionLinker = breathinglevelCompletionLinkers[i];
+            }
+        }
     }
 }
 

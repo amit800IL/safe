@@ -14,9 +14,10 @@ public class BackButton : MonoBehaviour
 
     private IEnumerator BackToMenuCoroutine()
     {
+
         AsyncOperation asyncSceneLoad = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
 
-        DataSavingManager.Instance?.LoadGame();
+        DataSavingManager.Instance.LoadGame();
 
         while (!asyncSceneLoad.isDone)
         {

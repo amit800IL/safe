@@ -7,9 +7,9 @@ public class SandPotFilling : MonoBehaviour, ISavable
     [SerializeField] private Image sandImage;
     [SerializeField] private float sandFillAmount;
 
-    private void Start()
+    private void Awake()
     {
-        DataSavingManager.Instance?.RegisterSavable(this);
+        DataSavingManager.Instance.RegisterSavable(this);
     }
 
     public IEnumerator FillPot()
