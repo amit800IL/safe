@@ -5,6 +5,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(LevelObject))]
 public class LogicalQuestion : MonoBehaviour
 {
+    [SerializeField] private LogicLevelObjectsContainer logicLevelObjectsContainer;
     [SerializeField] private TextMeshProUGUI questionText;
     [SerializeField] private LogicQuestionsSO logicQuestionSO;
     [SerializeField] private Button continueButton;
@@ -25,6 +26,13 @@ public class LogicalQuestion : MonoBehaviour
         {
             button.onClick.AddListener(() => OptionsChoosing(button));
         }
+
+        continueButton.onClick.AddListener(logicLevelObjectsContainer.RegisterLevelEnd);
+    }
+
+    private void OnDisable()
+    {
+        continueButton.onClick.RemoveListener(logicLevelObjectsContainer.RegisterLevelEnd);
     }
 
     public void OptionsChoosing(Button buttonClicked)

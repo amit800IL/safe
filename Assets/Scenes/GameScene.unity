@@ -498,6 +498,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3853116660415764464, guid: 1875729b5435b2d429c6e18c468a3f19, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3853116660415764464, guid: 1875729b5435b2d429c6e18c468a3f19, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1510320469}
@@ -609,6 +613,10 @@ PrefabInstance:
       propertyPath: logicQuestionSO
       value: 
       objectReference: {fileID: 11400000, guid: 9beeedb0c8c07ed488586daf68d38dd8, type: 2}
+    - target: {fileID: 6089559788280918605, guid: 1875729b5435b2d429c6e18c468a3f19, type: 3}
+      propertyPath: logicLevelObjectsContainer
+      value: 
+      objectReference: {fileID: 1510320471}
     - target: {fileID: 6331010854587202333, guid: 1875729b5435b2d429c6e18c468a3f19, type: 3}
       propertyPath: levelObjectSO
       value: 
@@ -2697,7 +2705,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5881090556464661207, guid: 6cf0bf0f260ae19428dac80ee425d0e0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5881090556464661207, guid: 6cf0bf0f260ae19428dac80ee425d0e0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -2803,6 +2811,10 @@ PrefabInstance:
       propertyPath: sandPotFilling
       value: 
       objectReference: {fileID: 2135294472}
+    - target: {fileID: 6870387377509789166, guid: 6cf0bf0f260ae19428dac80ee425d0e0, type: 3}
+      propertyPath: groundingLevelObjectsContainer
+      value: 
+      objectReference: {fileID: 1164349389}
     - target: {fileID: 7598405132884102009, guid: 6cf0bf0f260ae19428dac80ee425d0e0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 3
@@ -5274,6 +5286,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5881090556464661207, guid: 6cf0bf0f260ae19428dac80ee425d0e0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5881090556464661207, guid: 6cf0bf0f260ae19428dac80ee425d0e0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1164349389}
@@ -5317,6 +5333,10 @@ PrefabInstance:
       propertyPath: sandPotFilling
       value: 
       objectReference: {fileID: 2135294472}
+    - target: {fileID: 6870387377509789166, guid: 6cf0bf0f260ae19428dac80ee425d0e0, type: 3}
+      propertyPath: groundingLevelObjectsContainer
+      value: 
+      objectReference: {fileID: 1164349389}
     - target: {fileID: 7598405132884102009, guid: 6cf0bf0f260ae19428dac80ee425d0e0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -7585,6 +7605,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3853116660415764464, guid: 1875729b5435b2d429c6e18c468a3f19, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3853116660415764464, guid: 1875729b5435b2d429c6e18c468a3f19, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 2101647563}
@@ -7684,6 +7708,10 @@ PrefabInstance:
       propertyPath: logicQuestionSO
       value: 
       objectReference: {fileID: 11400000, guid: f5b8592d234f9d748817c05f1d64e94c, type: 2}
+    - target: {fileID: 6089559788280918605, guid: 1875729b5435b2d429c6e18c468a3f19, type: 3}
+      propertyPath: logicLevelObjectsContainer
+      value: 
+      objectReference: {fileID: 1510320471}
     - target: {fileID: 6331010854587202333, guid: 1875729b5435b2d429c6e18c468a3f19, type: 3}
       propertyPath: levelObjectSO
       value: 
@@ -7899,6 +7927,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1510320471}
     - target: {fileID: 5441028971875425276, guid: 1a6036b0e1ca23645a9daa21da63b374, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5441028971875425276, guid: 1a6036b0e1ca23645a9daa21da63b374, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1361347327}
@@ -7922,6 +7954,10 @@ PrefabInstance:
       propertyPath: multipleChoiceQuestionSO
       value: 
       objectReference: {fileID: 11400000, guid: 96f030ab19c5a1047a8c52e07c826f8b, type: 2}
+    - target: {fileID: 7798507504864651473, guid: 1a6036b0e1ca23645a9daa21da63b374, type: 3}
+      propertyPath: logicLevelObjectsContainer
+      value: 
+      objectReference: {fileID: 1510320471}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7957,7 +7993,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5881090556464661207, guid: 6cf0bf0f260ae19428dac80ee425d0e0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5881090556464661207, guid: 6cf0bf0f260ae19428dac80ee425d0e0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -8067,6 +8103,10 @@ PrefabInstance:
       propertyPath: sandPotFilling
       value: 
       objectReference: {fileID: 2135294472}
+    - target: {fileID: 6870387377509789166, guid: 6cf0bf0f260ae19428dac80ee425d0e0, type: 3}
+      propertyPath: groundingLevelObjectsContainer
+      value: 
+      objectReference: {fileID: 1164349389}
     - target: {fileID: 7598405132884102009, guid: 6cf0bf0f260ae19428dac80ee425d0e0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 3

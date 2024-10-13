@@ -7,6 +7,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(LevelObject))]
 public class MultipleChoiceQuestion : MonoBehaviour
 {
+    [SerializeField] private LogicLevelObjectsContainer logicLevelObjectsContainer;
     [SerializeField] private TextMeshProUGUI questionText;
     [SerializeField] private MultipleChoiceQuestionSO multipleChoiceQuestionSO;
     [SerializeField] private Button continueButton;
@@ -39,6 +40,13 @@ public class MultipleChoiceQuestion : MonoBehaviour
                 OddNumberButtons.Add(button);
             }
         }
+
+        continueButton.onClick.AddListener(logicLevelObjectsContainer.RegisterLevelEnd);
+    }
+
+    private void OnDisable()
+    {
+        continueButton.onClick.RemoveListener(logicLevelObjectsContainer.RegisterLevelEnd);
     }
 
     public void ChooseNumbers(Button buttonClicked)
