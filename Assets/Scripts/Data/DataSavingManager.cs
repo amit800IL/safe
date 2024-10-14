@@ -33,7 +33,6 @@ public class DataSavingManager : MonoBehaviour
 
         this.dataSavingObjects = new List<ISavable>();
 
-        //fileDataHandler.Delete();
     }
 
     private void OnEnable()
