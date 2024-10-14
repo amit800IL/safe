@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "MultipleChoiceQuestion", menuName = "ScriptableObjects/MultipleChoiceQuestion")]
+[CreateAssetMenu(fileName = "MultipleChoiceQuestion", menuName = "LevelObjects/MultipleChoiceQuestion")]
 public class MultipleChoiceQuestionSO : LevelObjectSO
 {
     [RTLText]

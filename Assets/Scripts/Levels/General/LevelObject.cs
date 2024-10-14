@@ -25,7 +25,7 @@ public class LevelObject : MonoBehaviour
     {
         if (!completionLinkers.Contains(LevelCompletionLinker) && !LevelCompletionLinker.IsLevelDone)
         {
-           LevelCompletionLinker.IsLevelDone = levelObjectSO.IsLevelDone;
+            LevelCompletionLinker.IsLevelDone = levelObjectSO.IsLevelDone;
 
             LevelCompletionLinker = new LevelCompletionLinker(LevelCompletionLinker.IsLevelDone, levelObjectSO);
 

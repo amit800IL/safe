@@ -1,8 +1,6 @@
 using UnityEngine;
 
-
-[CreateAssetMenu(fileName = "LevelObjectData", menuName = "LevelObject/LevelObjectData")]
-public class LevelObjectSO : ScriptableObject
+public abstract class LevelObjectSO : ScriptableObject
 {
     public bool IsLevelDone = true;
 }

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "GroundingWordsLevel", menuName = "ScriptableObjects/GroundingLevel")]
+[CreateAssetMenu(fileName = "GroundingWordsLevel", menuName = "LevelObjects/GroundingLevel")]
 public class GroundingLevelSO : LevelObjectSO
 {
     [RTLText]

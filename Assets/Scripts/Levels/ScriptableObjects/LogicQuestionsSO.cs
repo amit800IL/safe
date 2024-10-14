@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "LogicQuestionLevel", menuName = "ScriptableObjects/LogicQuestions")]
+[CreateAssetMenu(fileName = "LogicQuestionLevel", menuName = "LevelObjects/LogicQuestions")]
 public class LogicQuestionsSO : LevelObjectSO
 {
     [RTLText]

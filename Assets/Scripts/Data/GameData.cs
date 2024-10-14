@@ -5,17 +5,21 @@ using UnityEngine;
 public class GameData
 {
 
-    [Header("Logic Level")]
+    [Header("Logic Levels")]
 
     public List<LevelCompletionLinker> logicLevelCompletionLinker = new List<LevelCompletionLinker>();
 
-    [Header("Grounding Level")]
+    [Header("Grounding Levels")]
 
     public List<LevelCompletionLinker> groundingLevelCompletionLinker = new List<LevelCompletionLinker>();
 
-    [Header("Breathing Level")]
+    [Header("Breathing Levels")]
 
     public List<LevelCompletionLinker> breathingLevelCompletionLinker = new List<LevelCompletionLinker>();
+
+    [Header("Support Levels")]
+
+    public List<LevelCompletionLinker> SupportLevelCompletionLinker = new List<LevelCompletionLinker>();
 
     public float pourImageFill = 0f;
 

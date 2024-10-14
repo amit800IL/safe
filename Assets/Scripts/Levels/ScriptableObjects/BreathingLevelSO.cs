@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "BreathingLevel", menuName = "ScriptableObjects/BreathingLevel")]
+[CreateAssetMenu(fileName = "BreathingLevel", menuName = "LevelObjects/BreathingLevel")]
 public class BreathingLevelSO : LevelObjectSO
 {
 

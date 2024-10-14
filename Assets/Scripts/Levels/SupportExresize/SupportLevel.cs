@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Support : MonoBehaviour
+public class SupportLevel : MonoBehaviour
 {
     [SerializeField] private Button writeButton;
     private const int maxCharchters = 1000;
