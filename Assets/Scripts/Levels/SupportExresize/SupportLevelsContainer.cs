@@ -26,14 +26,14 @@ public class SupportLevelsContainer : MonoBehaviour, ISavable
     {
         if (gameData == null) return;
 
-        gameData.SupportLevelCompletionLinker = new List<LevelCompletionLinker>(SupportLevelsCompletionLinker);
+        gameData.supportLevelCompletionLinker = new List<LevelCompletionLinker>(SupportLevelsCompletionLinker);
     }
 
     public void LoadData(GameData gameData)
     {
         if (gameData == null) return;
 
-        SupportLevelsCompletionLinker = new List<LevelCompletionLinker>(gameData.SupportLevelCompletionLinker);
+        SupportLevelsCompletionLinker = new List<LevelCompletionLinker>(gameData.supportLevelCompletionLinker);
 
         for (int i = 0; i < SupportLevelsCompletionLinker.Count; i++)
         {

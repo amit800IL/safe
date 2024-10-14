@@ -19,7 +19,7 @@ public class GameData
 
     [Header("Support Levels")]
 
-    public List<LevelCompletionLinker> SupportLevelCompletionLinker = new List<LevelCompletionLinker>();
+    public List<LevelCompletionLinker> supportLevelCompletionLinker = new List<LevelCompletionLinker>();
 
     public float pourImageFill = 0f;
 
