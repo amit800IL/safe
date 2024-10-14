@@ -123,28 +123,22 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &19290275 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 175938649553328374, guid: 0ad8b77b8b63cac4987e11fd598901dd, type: 3}
+  m_PrefabInstance: {fileID: 1836241083988478599}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &19290276 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4665962348422440485, guid: 0ad8b77b8b63cac4987e11fd598901dd, type: 3}
   m_PrefabInstance: {fileID: 1836241083988478599}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &19290277 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6021331828586764041, guid: 0ad8b77b8b63cac4987e11fd598901dd, type: 3}
-  m_PrefabInstance: {fileID: 1836241083988478599}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e12800c28bb42da499425b93a6faaa5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &19290278 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 832086349627262330, guid: 0ad8b77b8b63cac4987e11fd598901dd, type: 3}
   m_PrefabInstance: {fileID: 1836241083988478599}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 19290275}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 870eba42ea178574a88b0cef78fd13a2, type: 3}
@@ -181,6 +175,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4749305494117980320, guid: 81256dfabb899cf4e86a673cac437e35, type: 3}
       propertyPath: levelObjectSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 7a5871eebabf7f047af39710d7ab2ac9, type: 2}
+    - target: {fileID: 4806240433622132650, guid: 81256dfabb899cf4e86a673cac437e35, type: 3}
+      propertyPath: breathingLevelSO
       value: 
       objectReference: {fileID: 11400000, guid: 7a5871eebabf7f047af39710d7ab2ac9, type: 2}
     - target: {fileID: 4806240433622132650, guid: 81256dfabb899cf4e86a673cac437e35, type: 3}
@@ -1808,6 +1806,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6021331828586764041, guid: 0ad8b77b8b63cac4987e11fd598901dd, type: 3}
+      propertyPath: supporteExerciseSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 7ab0e9e5ceabaa8449521dbef6b32e9e, type: 2}
+    - target: {fileID: 6021331828586764041, guid: 0ad8b77b8b63cac4987e11fd598901dd, type: 3}
+      propertyPath: supportLevelsContainer
+      value: 
+      objectReference: {fileID: 858223770}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2282,7 +2288,7 @@ MonoBehaviour:
   objectToChangeActiveState:
   - {fileID: 1278383489}
   LevelSection: {fileID: 858223768}
-  levelStartScreen: {fileID: 1542232401}
+  levelStartScreen: {fileID: 1150584795}
   levelObjects:
   - {fileID: 19290278}
   - {fileID: 704302855}
@@ -2817,6 +2823,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6021331828586764041, guid: 0ad8b77b8b63cac4987e11fd598901dd, type: 3}
+      propertyPath: supporteExerciseSO
+      value: 
+      objectReference: {fileID: 11400000, guid: e218840c34aa12a45b08ab9de7eaf7d6, type: 2}
+    - target: {fileID: 6021331828586764041, guid: 0ad8b77b8b63cac4987e11fd598901dd, type: 3}
+      propertyPath: supportLevelsContainer
+      value: 
+      objectReference: {fileID: 858223770}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3095,6 +3109,10 @@ PrefabInstance:
       propertyPath: sandPotFilling
       value: 
       objectReference: {fileID: 2135294472}
+    - target: {fileID: 6870387377509789166, guid: 6cf0bf0f260ae19428dac80ee425d0e0, type: 3}
+      propertyPath: GroundingLevelSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 2e95d30b0508bcd4da2bbd27aa0f9832, type: 2}
     - target: {fileID: 6870387377509789166, guid: 6cf0bf0f260ae19428dac80ee425d0e0, type: 3}
       propertyPath: groundingLevelObjectsContainer
       value: 
@@ -3437,9 +3455,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 19290277}
-        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-        m_MethodName: set_enabled
+      - m_Target: {fileID: 19290275}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3618,6 +3636,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4749305494117980320, guid: 81256dfabb899cf4e86a673cac437e35, type: 3}
       propertyPath: levelObjectSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 31893c6f454b8a84cb519068bcbb5417, type: 2}
+    - target: {fileID: 4806240433622132650, guid: 81256dfabb899cf4e86a673cac437e35, type: 3}
+      propertyPath: breathingLevelSO
       value: 
       objectReference: {fileID: 11400000, guid: 31893c6f454b8a84cb519068bcbb5417, type: 2}
     - target: {fileID: 4806240433622132650, guid: 81256dfabb899cf4e86a673cac437e35, type: 3}
@@ -5446,6 +5468,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2135294472}
     - target: {fileID: 6870387377509789166, guid: 6cf0bf0f260ae19428dac80ee425d0e0, type: 3}
+      propertyPath: GroundingLevelSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 83acbf1b76ca837459176d7692068ee4, type: 2}
+    - target: {fileID: 6870387377509789166, guid: 6cf0bf0f260ae19428dac80ee425d0e0, type: 3}
       propertyPath: groundingLevelObjectsContainer
       value: 
       objectReference: {fileID: 1164349389}
@@ -7231,6 +7257,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6021331828586764041, guid: 0ad8b77b8b63cac4987e11fd598901dd, type: 3}
+      propertyPath: supporteExerciseSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 675d781af0fbb4f46aaaf90a3dd82d05, type: 2}
+    - target: {fileID: 6021331828586764041, guid: 0ad8b77b8b63cac4987e11fd598901dd, type: 3}
+      propertyPath: supportLevelsContainer
+      value: 
+      objectReference: {fileID: 858223770}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
