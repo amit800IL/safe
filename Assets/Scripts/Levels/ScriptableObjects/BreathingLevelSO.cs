@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "BreathingLevel", menuName = "ScriptableObjects/BreathingLevel")]
-public class BreathingLevelSO : ScriptableObject
+public class BreathingLevelSO : LevelObjectSO
 {
 
     [Header("Breathing In")]

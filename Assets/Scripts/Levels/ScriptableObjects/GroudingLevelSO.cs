@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "GroundingWordsLevel", menuName = "ScriptableObjects/GroundingLevel")]
-public class GroundingLevelSO : ScriptableObject
+public class GroundingLevelSO : LevelObjectSO
 {
     [RTLText]
     public string questionText;

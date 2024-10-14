@@ -9,8 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fda570933cdeef4db841051c27a7443, type: 3}
-  m_Name: LogicQuestion1
+  m_Script: {fileID: 11500000, guid: def98384b9deabf439a48a873d6a4aa2, type: 3}
+  m_Name: GroundingWordsLevel 1
   m_EditorClassIdentifier: 
-  LevelHashCode: 0
   IsLevelDone: 1
+  questionText: "\u05D4\u05DC\u05D9\u05DE \u05E8\u05D7\u05D1\u05EA"
+  buttonxText:
+  - "\u05DD\u05D9\u05DE"
+  - "\u05E5\u05D9\u05DE"
+  - "\u05E8\u05D7\u05D0 \u05D5\u05D4\u05E9\u05DE"

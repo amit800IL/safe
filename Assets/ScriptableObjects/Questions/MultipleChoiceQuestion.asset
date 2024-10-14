@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b443c0eed176cc94084757c0ca31737f, type: 3}
   m_Name: MultipleChoiceQuestion
   m_EditorClassIdentifier: 
+  IsLevelDone: 1
   questionText: "\u05DD\u05D9\u05D9\u05D2\u05D5\u05D6 \u05D9\u05D0 \u05DD\u05D9\u05E8\u05E4\u05E1\u05DE
     \u05D5\u05E8\u05D7\u05D1"
   choicesText:

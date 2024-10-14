@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "LogicQuestionLevel", menuName = "ScriptableObjects/LogicQuestions")]
-public class LogicQuestionsSO : ScriptableObject
+public class LogicQuestionsSO : LevelObjectSO
 {
     [RTLText]
     public string questionText;

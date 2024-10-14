@@ -38,10 +38,7 @@ public class GroundingWordsLevel : MonoBehaviour
     {
         foreach (Button buttonObject in buttonsList)
         {
-            if (buttonObject != button)
-            {
-                buttonObject.interactable = false;
-            }
+            buttonObject.interactable = false;
         }
 
         yield return MoveWordToPositon(button);

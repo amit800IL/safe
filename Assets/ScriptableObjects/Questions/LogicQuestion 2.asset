@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6bce1b8aa74cfd348a4f1585d869ea67, type: 3}
-  m_Name: LogicQuestion 1
+  m_Name: LogicQuestion 2
   m_EditorClassIdentifier: 
+  IsLevelDone: 1
   questionText: "?\u05DC\u05D0\u05E8\u05E9\u05D9 \u05DC\u05E9 \u05D4\u05E8\u05D9\u05D1\u05D4
     \u05E8\u05D9\u05E2 \u05D9\u05D4\u05DE"
   buttonxText:
