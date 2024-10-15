@@ -50,7 +50,6 @@ public class MovementLevel : MonoBehaviour
                 case MovementType.EasedUpAndDownMovement:
                     yield return EasedUpAndDownMovement(originalPos);
                     break;
-
             }
 
             yield return null;
@@ -59,71 +58,24 @@ public class MovementLevel : MonoBehaviour
 
     private IEnumerator InfinityMovement(Vector3 originalPos)
     {
-        float startTime = 0f;
-        float endtime = movementLevelSO.time;
+        float time = 0f;
+        float width = 5.0f;
+        float height = 3.0f;
 
-        Vector3 DownPosition = originalPos - new Vector3(0f, 100, 0f);
-        Vector3 upPosition = originalPos;
+        bool InfiniteMovementActive = true;
 
-        while (startTime < endtime)
+        while (InfiniteMovementActive)
         {
-            startTime += Time.deltaTime;
+            time += Time.deltaTime * movementLevelSO.speed;
 
-            float progress = (startTime / endtime);
+            float x = width * Mathf.Sin(time);
+            float y = (height * (Mathf.Sin(2 * time)) / 2);
 
-            movingCircle.transform.position = Vector3.Lerp(originalPos, DownPosition, progress);
-
-            yield return null;
-        }
-
-        startTime = 0f;
-
-        while (startTime < endtime)
-        {
-            startTime += Time.deltaTime;
-
-            float progress = (startTime / endtime);
-
-            movingCircle.transform.position = Vector3.Lerp(DownPosition, upPosition, progress);
+            movingCircle.transform.position = originalPos + new Vector3(x, y, 0f);
 
             yield return null;
         }
     }
-
-
-    private IEnumerator EasedUpAndDownMovement(Vector3 originalPos)
-    {
-        float startTime = 0f;
-        float endtime = movementLevelSO.time;
-
-        Vector3 DownPosition = originalPos - new Vector3(0f, 100, 0f);
-        Vector3 upPosition = originalPos;
-
-        while (startTime < endtime)
-        {
-            startTime += Time.deltaTime;
-
-            float progress = (startTime / endtime);
-
-            movingCircle.transform.position = Vector3.Lerp(originalPos, DownPosition, progress);
-
-            yield return null;
-        }
-
-        startTime = 0f;
-
-        while (startTime < endtime)
-        {
-            startTime += Time.deltaTime;
-
-            float progress = (startTime / endtime);
-
-            movingCircle.transform.position = Vector3.Lerp(DownPosition, upPosition, progress);
-
-            yield return null;
-        }
-    }
-
 
     private IEnumerator LinearUpAndDownMovement(Vector3 originalPos)
     {
@@ -153,6 +105,42 @@ public class MovementLevel : MonoBehaviour
             float progress = (startTime / endtime);
 
             movingCircle.transform.position = Vector3.Lerp(DownPosition, upPosition, progress);
+
+            yield return null;
+        }
+    }
+    private IEnumerator EasedUpAndDownMovement(Vector3 originalPos)
+    {
+        float startTime = 0f;
+        float endtime = movementLevelSO.time;
+
+        Vector3 DownPosition = originalPos - new Vector3(0f, 100, 0f);
+        Vector3 upPosition = originalPos;
+
+        while (startTime < endtime)
+        {
+            startTime += Time.deltaTime;
+
+            float progress = (startTime / endtime);
+
+            float easedProgress = Mathf.SmoothStep(0f, 1f, progress);
+
+            movingCircle.transform.position = Vector3.Lerp(originalPos, DownPosition, easedProgress);
+
+            yield return null;
+        }
+
+        startTime = 0f;
+
+        while (startTime < endtime)
+        {
+            startTime += Time.deltaTime;
+
+            float progress = (startTime / endtime);
+
+            float easedProgress = Mathf.SmoothStep(0f, 1f, progress);
+
+            movingCircle.transform.position = Vector3.Lerp(DownPosition, upPosition, easedProgress);
 
             yield return null;
         }
