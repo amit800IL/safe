@@ -7,11 +7,11 @@ using UnityEngine.UI;
 public class GroundingWordsLevel : MonoBehaviour
 {
     private GroundingLevelObjectsContainer groundingLevelObjectsContainer;
+    private SandPotFilling sandPotFilling;
     [SerializeField] private GroundingLevelSO GroundingLevelSO;
     [SerializeField] private Button continueButton;
     [SerializeField] private Button[] buttonsList;
     [SerializeField] private Transform wordTargetLocation;
-    [SerializeField] private SandPotFilling sandPotFilling;
 
     private void Start()
     {
@@ -27,6 +27,7 @@ public class GroundingWordsLevel : MonoBehaviour
         if (groundingLevelObjectsContainer != null)
         {
             continueButton.onClick.AddListener(groundingLevelObjectsContainer.RegisterLevelEnd);
+            sandPotFilling = groundingLevelObjectsContainer.GetComponentInChildren<SandPotFilling>();
         }
 
     }
@@ -46,6 +47,8 @@ public class GroundingWordsLevel : MonoBehaviour
 
     private IEnumerator FillPot(Button button)
     {
+        if (sandPotFilling == null) yield break;
+
         foreach (Button buttonObject in buttonsList)
         {
             buttonObject.interactable = false;
