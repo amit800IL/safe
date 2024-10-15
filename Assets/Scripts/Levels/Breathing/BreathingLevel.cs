@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(LevelObject))]
 public class BreathingLevel : MonoBehaviour
 {
     private BreathingLevelObjectsCotainer breathingLevelObjectsCotainer;
