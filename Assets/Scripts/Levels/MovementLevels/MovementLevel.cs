@@ -59,8 +59,8 @@ public class MovementLevel : MonoBehaviour
     private IEnumerator InfinityMovement(Vector3 originalPos)
     {
         float time = 0f;
-        float width = 5.0f;
-        float height = 3.0f;
+        float width = 300.0f;
+        float height = 300.0f * 0.6f;
 
         bool InfiniteMovementActive = true;
 
