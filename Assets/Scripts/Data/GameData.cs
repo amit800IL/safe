@@ -21,6 +21,11 @@ public class GameData
 
     public List<LevelCompletionLinker> supportLevelCompletionLinker = new List<LevelCompletionLinker>();
 
+
+    [Header("Movement Levels")]
+
+    public List<LevelCompletionLinker> movementLevelCompletionLinker = new List<LevelCompletionLinker>();
+
     public float pourImageFill = 0f;
 
     

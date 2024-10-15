@@ -57,7 +57,7 @@ public class GroundingWordsLevel : MonoBehaviour
         yield return MoveWordToPositon(button);
 
         yield return sandPotFilling.FillPot();
-
+         
         continueButton.gameObject.SetActive(true);
 
     }
