@@ -1,11 +1,10 @@
-using System.Text;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SupportLevel : MonoBehaviour
 {
-    [SerializeField] private SupportLevelsContainer supportLevelsContainer;
+    private SupportLevelsContainer supportLevelsContainer;
     [SerializeField] private SupporteExerciseSO supporteExerciseSO;
     [SerializeField] private TextMeshProUGUI levelText;
     [SerializeField] private TextMeshProUGUI finishText;
@@ -17,6 +16,8 @@ public class SupportLevel : MonoBehaviour
 
     private void Start()
     {
+        supportLevelsContainer = GetComponentInParent<SupportLevelsContainer>();
+
         levelText.text = supporteExerciseSO.ExerciseText;
 
         finishText.text = supporteExerciseSO.FinishText;

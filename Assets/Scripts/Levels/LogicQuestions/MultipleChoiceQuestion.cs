@@ -7,7 +7,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(LevelObject))]
 public class MultipleChoiceQuestion : MonoBehaviour
 {
-    [SerializeField] private LogicLevelObjectsContainer logicLevelObjectsContainer;
+    private LogicLevelObjectsContainer logicLevelObjectsContainer;
     [SerializeField] private TextMeshProUGUI questionText;
     [SerializeField] private MultipleChoiceQuestionSO multipleChoiceQuestionSO;
     [SerializeField] private Button continueButton;
@@ -19,6 +19,8 @@ public class MultipleChoiceQuestion : MonoBehaviour
 
     private void Start()
     {
+
+
         questionText.text = multipleChoiceQuestionSO.questionText;
 
         for (int i = 0; i < multipleChoiceButton.Length; i++)
@@ -41,12 +43,21 @@ public class MultipleChoiceQuestion : MonoBehaviour
             }
         }
 
-        continueButton.onClick.AddListener(logicLevelObjectsContainer.RegisterLevelEnd);
+        logicLevelObjectsContainer = GetComponentInParent<LogicLevelObjectsContainer>();
+
+        if (logicLevelObjectsContainer != null)
+        {
+            continueButton.onClick.AddListener(logicLevelObjectsContainer.RegisterLevelEnd);
+        }
+
     }
 
     private void OnDisable()
     {
-        continueButton.onClick.RemoveListener(logicLevelObjectsContainer.RegisterLevelEnd);
+        if (logicLevelObjectsContainer != null)
+        {
+            continueButton.onClick.RemoveListener(logicLevelObjectsContainer.RegisterLevelEnd);
+        }
     }
 
     public void ChooseNumbers(Button buttonClicked)

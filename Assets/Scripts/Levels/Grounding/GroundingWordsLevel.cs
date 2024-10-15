@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GroundingWordsLevel : MonoBehaviour
 {
-    [SerializeField] private GroundingLevelObjectsContainer groundingLevelObjectsContainer;
+    private GroundingLevelObjectsContainer groundingLevelObjectsContainer;
     [SerializeField] private GroundingLevelSO GroundingLevelSO;
     [SerializeField] private Button continueButton;
     [SerializeField] private Button[] buttonsList;
@@ -21,12 +21,21 @@ public class GroundingWordsLevel : MonoBehaviour
             buttonText.text = GroundingLevelSO.buttonxText[i];
         }
 
-        continueButton.onClick.AddListener(groundingLevelObjectsContainer.RegisterLevelEnd);
+        groundingLevelObjectsContainer = GetComponentInParent<GroundingLevelObjectsContainer>();
+
+        if (groundingLevelObjectsContainer != null)
+        {
+            continueButton.onClick.AddListener(groundingLevelObjectsContainer.RegisterLevelEnd);
+        }
+
     }
 
     private void OnDisable()
     {
-        continueButton.onClick.RemoveListener(groundingLevelObjectsContainer.RegisterLevelEnd);
+        if (groundingLevelObjectsContainer != null)
+        {
+            continueButton.onClick.RemoveListener(groundingLevelObjectsContainer.RegisterLevelEnd);
+        }
     }
 
     public void WordMovingAndSandFill(Button button)

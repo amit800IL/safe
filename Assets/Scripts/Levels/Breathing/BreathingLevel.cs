@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class BreathingLevel : MonoBehaviour
 {
-    [SerializeField] private BreathingLevelObjectsCotainer breathingLevelObjectsCotainer;
+    private BreathingLevelObjectsCotainer breathingLevelObjectsCotainer;
     [SerializeField] private BreathingLevelSO breathingLevelSO;
     [SerializeField] private TextMeshProUGUI levelText;
     [SerializeField] private Image FilligImage;
@@ -13,13 +13,22 @@ public class BreathingLevel : MonoBehaviour
 
     private void Start()
     {
-        continueButton.onClick.AddListener(breathingLevelObjectsCotainer.RegisterLevelEnd);
+        breathingLevelObjectsCotainer = GetComponentInParent<BreathingLevelObjectsCotainer>();
+
+        if (breathingLevelObjectsCotainer != null)
+        {
+            continueButton.onClick.AddListener(breathingLevelObjectsCotainer.RegisterLevelEnd);
+        }
+
         StartCoroutine(BreathingLevelCoroutine());
     }
 
     private void OnDisable()
     {
-        continueButton.onClick.AddListener(breathingLevelObjectsCotainer.RegisterLevelEnd);
+        if (breathingLevelObjectsCotainer != null)
+        {
+            continueButton.onClick.AddListener(breathingLevelObjectsCotainer.RegisterLevelEnd);
+        }
     }
 
     public IEnumerator BreathingLevelCoroutine()
