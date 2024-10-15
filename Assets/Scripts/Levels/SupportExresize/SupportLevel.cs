@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(LevelObject))]
 public class SupportLevel : MonoBehaviour
 {
     private SupportLevelsContainer supportLevelsContainer;
@@ -16,8 +17,6 @@ public class SupportLevel : MonoBehaviour
 
     private void Start()
     {
-        supportLevelsContainer = GetComponentInParent<SupportLevelsContainer>();
-
         levelText.text = supporteExerciseSO.ExerciseText;
 
         finishText.text = supporteExerciseSO.FinishText;
@@ -25,15 +24,25 @@ public class SupportLevel : MonoBehaviour
         finishText.gameObject.SetActive(false);
 
         writeButton.onClick.AddListener(WriteText);
-        continueButton.onClick.AddListener(supportLevelsContainer.RegisterLevelEnd);
         backButton.onClick.AddListener(LevelFinish);
+
+        supportLevelsContainer = GetComponentInParent<SupportLevelsContainer>();
+
+        if (supportLevelsContainer != null)
+        {
+            continueButton.onClick.AddListener(supportLevelsContainer.RegisterLevelEnd);
+        }
     }
 
     private void OnDisable()
     {
         writeButton.onClick.RemoveListener(WriteText);
-        continueButton.onClick.RemoveListener(supportLevelsContainer.RegisterLevelEnd);
         backButton.onClick.RemoveListener(LevelFinish);
+
+        if (supportLevelsContainer != null)
+        {
+            continueButton.onClick.RemoveListener(supportLevelsContainer.RegisterLevelEnd);
+        }
     }
 
     public void WriteText()
