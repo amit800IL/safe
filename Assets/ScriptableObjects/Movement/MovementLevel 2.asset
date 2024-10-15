@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: MovementLevel 2
   m_EditorClassIdentifier: 
   IsLevelDone: 1
-  movementType: 0
-  speed: 1
-  time: 1
+  movementType: 1
+  speed: 3
+  time: 3

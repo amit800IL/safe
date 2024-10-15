@@ -1,12 +1,12 @@
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(LevelObjectSO))]
+[CustomEditor(typeof(LevelObjectSO), true)]
 public class LevelObjectSOEditor : Editor
 {
     public override void OnInspectorGUI()
     {
-        base.OnInspectorGUI();
+        serializedObject.Update();
 
         LevelObjectSO levelObject = (LevelObjectSO)target;
 
@@ -24,6 +24,8 @@ public class LevelObjectSOEditor : Editor
         }
 
         GUI.enabled = true;
+
+        DrawPropertiesExcluding(serializedObject, "IsLevelDone");
 
         serializedObject.ApplyModifiedProperties();
     }

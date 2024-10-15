@@ -216,6 +216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementLevelSO: {fileID: 0}
   continueButton: {fileID: 1354815035158210461}
+  movingCircle: {fileID: 4393324017695279885}
 --- !u!114 &9154997726888957773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,7 +299,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 3
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 1

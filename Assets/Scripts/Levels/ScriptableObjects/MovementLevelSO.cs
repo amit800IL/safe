@@ -14,6 +14,6 @@ public class MovementLevelSO : LevelObjectSO
 public enum MovementType
 {
     InfinityMovement,
-    UpAndDownMovement,
-    CircleMovement,
+    LinearUpAndDownMovement,
+    EasedUpAndDownMovement,
 }
