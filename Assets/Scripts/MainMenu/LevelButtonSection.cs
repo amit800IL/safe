@@ -42,23 +42,32 @@ public class LevelButtonSection : MonoBehaviour
         MainMenuCanvas.gameObject.SetActive(false);
     }
 
-    public void ActivateLogicLevel(LevelObject levelObject)
+    public void ActivateLevel(int levelIndex)
     {
-        foreach (LevelObject level in levelObjects)
+        for (int i = 0; i < levelObjects.Length; i++)
         {
-            levelStartScreen.SetActive(false);
-            level.gameObject.SetActive(false);
+            if (i == levelIndex)
+            {
+                foreach (LevelObject level in levelObjects)
+                {
+                    levelStartScreen.SetActive(false);
+                    level.gameObject.SetActive(false);
+                }
+
+                foreach (GameObject obj in objectToChangeActiveState)
+                {
+                    obj.gameObject.SetActive(true);
+                }
+
+                levelObjects[i].gameObject.SetActive(true);
+
+                LevelSection.SetActive(true);
+
+                MainMenuCanvas.gameObject.SetActive(false);
+
+                break;
+            }
         }
 
-        foreach (GameObject obj in objectToChangeActiveState)
-        {
-            obj.gameObject.SetActive(true);
-        }
-
-        levelObject.gameObject.SetActive(true);
-
-        LevelSection.SetActive(true);
-
-        MainMenuCanvas.gameObject.SetActive(false);
     }
 }

@@ -32,8 +32,6 @@ public class DataSavingManager : MonoBehaviour
         this.fileDataHandler = new FileDataHandler(Application.persistentDataPath, FileName);
 
         this.dataSavingObjects = new List<ISavable>();
-
-        //fileDataHandler.Delete();
     }
 
     private void OnEnable()

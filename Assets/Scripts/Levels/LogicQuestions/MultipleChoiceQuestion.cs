@@ -19,8 +19,6 @@ public class MultipleChoiceQuestion : MonoBehaviour
 
     private void Start()
     {
-
-
         questionText.text = multipleChoiceQuestionSO.questionText;
 
         for (int i = 0; i < multipleChoiceButton.Length; i++)

@@ -28,7 +28,7 @@ public class BreathingLevel : MonoBehaviour
     {
         if (breathingLevelObjectsCotainer != null)
         {
-            continueButton.onClick.AddListener(breathingLevelObjectsCotainer.RegisterLevelEnd);
+            continueButton.onClick.RemoveListener(breathingLevelObjectsCotainer.RegisterLevelEnd);
         }
     }
 

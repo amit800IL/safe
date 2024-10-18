@@ -13,7 +13,6 @@ public class LogicalQuestion : MonoBehaviour
 
     private void Start()
     {
-
         questionText.text = logicQuestionSO.questionText;
 
         for (int i = 0; i < questionButtons.Length; i++)
