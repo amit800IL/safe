@@ -44,30 +44,28 @@ public class LevelButtonSection : MonoBehaviour
 
     public void ActivateLevel(int levelIndex)
     {
+        foreach (LevelObject level in levelObjects)
+        {
+            levelStartScreen.SetActive(false);
+            level.gameObject.SetActive(false);
+        }
+
+        foreach (GameObject obj in objectToChangeActiveState)
+        {
+            obj.gameObject.SetActive(true);
+        }
+
         for (int i = 0; i < levelObjects.Length; i++)
         {
             if (i == levelIndex)
             {
-                foreach (LevelObject level in levelObjects)
-                {
-                    levelStartScreen.SetActive(false);
-                    level.gameObject.SetActive(false);
-                }
-
-                foreach (GameObject obj in objectToChangeActiveState)
-                {
-                    obj.gameObject.SetActive(true);
-                }
-
                 levelObjects[i].gameObject.SetActive(true);
-
-                LevelSection.SetActive(true);
-
-                MainMenuCanvas.gameObject.SetActive(false);
-
                 break;
             }
         }
 
+        LevelSection.SetActive(true);
+
+        MainMenuCanvas.gameObject.SetActive(false);
     }
 }
